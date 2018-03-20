@@ -2,7 +2,19 @@
 
  **Table of Contents**
 
-[TOC]
+   * [Setting up CARLA simulator environment for Reinforcement Learning](#setting-up-carla-simulator-environment-for-reinforcement-learning)
+         * [Introduction](#introduction)
+      * [Requirements:](#requirements)
+      * [Setting up the CARLA Path](#setting-up-the-carla-path)
+      * [Getting the required files for RL](#getting-the-required-files-for-rl)
+      * [Playing with the Environment](#playing-with-the-environment)
+         * [To create an CARLA environment](#to-create-an-carla-environment)
+         * [Resetting the environment](#resetting-the-environment)
+         * [Taking an action](#taking-an-action)
+         * [Reading values after taking an action](#reading-values-after-taking-an-action)
+         * [Rendering the game after each action](#rendering-the-game-after-each-action)
+      * [Testing CARLA game as a human](#testing-carla-game-as-a-human)
+
 
 ### Introduction
 If you didn't know, **[CARLA is an open-source simulator for autonomous driving research.](https://github.com/carla-simulator/carla "CARLA is an open-source simulator for autonomous driving research.")**
