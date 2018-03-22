@@ -47,9 +47,9 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		# server configuration
 		self.server_height = 256
 		self.server_width = 360
-		self.port = 3032 #get_open_port()
+		self.port = get_open_port()
 		self.host = 'localhost'
-		self.level = 'town1'
+		self.level = 'town2' #Why town2: https://github.com/carla-simulator/carla/issues/10#issuecomment-342483829
 		self.map = CarlaLevel().get(self.level)
 
 		# client configuration
@@ -69,6 +69,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 				self.settings = fp.read()
 		else:
 			# hard coded settings
+			print("CarlaSettings.ini not found; using default settings")
 			self.settings = CarlaSettings()
 			self.settings.set(
 				SynchronousMode=True,
@@ -137,7 +138,9 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			self.renderer.create_screen(image.shape[1], image.shape[0])
 
 	def _open_server(self):
-
+        # Note: There is no way to disable rendering in CARLA as of now
+        # https://github.com/carla-simulator/carla/issues/286
+        # decrease the window resolution if you want to see if performance increases
 		with open(self.log_path, "wb") as out:
 			cmd = [path.join(environ.get('CARLA_ROOT'), 'CarlaUE4.sh'), self.map,
 								  "-benchmark", "-carla-server", "-fps=10", "-world-port={}".format(self.port),
@@ -190,7 +193,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			# screen.success('EPISODE IS DONE. GameTime: {}, Collision: {}'.format(str(measurements.game_timestamp),
 			#                                                                      str(is_collision)))
 			self.done = True
-			print("Episode Done")
+			print("Episode Ended")
 
 	def _take_action(self, action_idx):
 		if type(action_idx) == int:

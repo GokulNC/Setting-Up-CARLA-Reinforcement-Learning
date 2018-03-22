@@ -1,8 +1,8 @@
 import numpy as np
 from Environment.utils import *
 from Environment.renderer import Renderer
-import operator
-import time
+## Note: I have kept the renderer.py as it is eventhough CARLA doesn't use it, since if in future CARLA enables an option to toggle rendering, it'll be useful
+import operator, time
 
 class EnvironmentWrapper(object):
 	def __init__(self):
@@ -43,7 +43,7 @@ class EnvironmentWrapper(object):
 		self.wait_for_explicit_human_action = False
 		self.is_rendered = self.is_rendered or self.human_control
 		self.game_is_open = True
-		self.renderer = Renderer()
+		if self.is_rendered: self.renderer = Renderer()
 		self.observation = None
 
 	@property

@@ -1,0 +1,25 @@
+Notes on CARLA RL:
+
+Paper: http://proceedings.mlr.press/v78/dosovitskiy17a/dosovitskiy17a.pdf
+(See Reinforcement Learning & Imitation Learning, including the supplement at the end)
+
+From the paper for RL:
+    Algorithm used: A3C
+    #Actors: 12
+    Training config: multiple CARLA servers (a total of 12, 4 GPUs, 3 instances each) (https://github.com/carla-simulator/carla/issues/25)
+    # Steps: 10 million
+    Time Taken: 12days
+    FPS: 10
+    Initial Learning Rate: 7e^-4 (decayed to zero)
+    Input Image: 84 × 84 passed through 3 layer CNN (Mnih)
+    Input also has vecotors (The measurement vector includes the current speed of the car, distance to goal, damage from collisions,
+            and the current high-level command provided by the topological planner, in one-hot encoding)
+    Input Processing: The inputs are processed by two separate modules:
+            images by a convolutional module, measurements by a fully-connected network.
+            The outputs of the two modules are concatenated and further processed jointly
+    Rollouts (Batch size): 20
+    Entropy Regularization: 0.01
+    Reward function: The reward is a weighted sum of five terms: distance traveled towards the goal d in km, speed v in km/h, collision damage c,
+            intersection with the sidewalk s (between 0 and 1), and intersection with the opposite lane o (between 0 and 1).
+            (For more, ask here: https://github.com/carla-simulator/carla/issues/45)
+    

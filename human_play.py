@@ -11,7 +11,7 @@ brake_strength = -0.5
 
 action = [0.0, 0.0]
 reset = False
-debug_logs = True
+debug_logs = False
 
 def start_listen():
 	## Inspired from: https://pypi.python.org/pypi/pynput
@@ -20,15 +20,9 @@ def start_listen():
 	def on_press(key):
 		global action, reset, steering_strength, gas_strength, brake_strength
 		if key == keyboard.Key.up: action[0] = gas_strength
-		elif key == keyboard.Key.down:
-			action[0] = brake_strength
-			#if action[1]==0.0: action[0] = -brake_strength
-		elif key == keyboard.Key.left:
-			action[1] = -steering_strength
-			#if action[0] == -brake_strength: action[0] = brake_strength
-		elif key == keyboard.Key.right:
-			action[1] = steering_strength
-			#if action[0] == -brake_strength: action[0] = brake_strength
+		elif key == keyboard.Key.down: action[0] = brake_strength
+		elif key == keyboard.Key.left: action[1] = -steering_strength
+		elif key == keyboard.Key.right:	action[1] = steering_strength
 		elif key == keyboard.Key.space: reset = True
 
 	def on_release(key):
@@ -37,13 +31,11 @@ def start_listen():
 		elif key == keyboard.Key.left or key == keyboard.Key.right:
 			action[1] = 0.0
 
-
 	# Collect events until released
 	with keyboard.Listener(
 			on_press=on_press,
 			on_release=on_release) as listener:
 		listener.join()
-
 
 
 print("Creating Environment & resetting")
@@ -62,10 +54,10 @@ actions = {0: (0., 0.),
 
 action_map = {v: k for k, v in actions.items()} #https://stackoverflow.com/a/483833/5002496
 
-frame_skip = 1
+frame_skip = 1 #No. of frames to skip, i.e., the no. of frames in which to produce consecutive actions. Already CARLA is low FPS, so better be 1
 
 env.reset()
-total_reward = 0
+total_reward = 0.0
 
 t = Thread(target=start_listen) # Start listening to key presses and update actions
 t.start()
@@ -74,10 +66,9 @@ if debug_logs:
 	frame_id = 0
 	total_frames = 100 # No. of frames once to print the FPS rate
 	start_time = time.time()
-
+print("Start playing..... :)")
 while True:
-	frame_id += 1
-	r = 0.0
+	
 	if debug_logs:
 		print("Action: "+str(action)+" - ID: "+str(action_map[tuple(action)]))
 		frame_id = (frame_id+1) % total_frames
@@ -86,7 +77,7 @@ while True:
 			print("FPS: "+str(total_frames/(end_time-start_time)))
 			start_time = end_time
 
-
+	r = 0.0
 	for _ in range(frame_skip):
 		output = env.step(action_map[tuple(action)])
 
@@ -102,4 +93,4 @@ while True:
 		env.reset()
 		reset = False
 		print("Total reward in episode:"+str(total_reward))
-		total_reward = 0
+		total_reward = 0.0

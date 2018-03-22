@@ -21,16 +21,17 @@ If you didn't know, **[CARLA is an open-source simulator for autonomous driving 
 
 It can be used as an environment for training [ADAS](https://en.wikipedia.org/wiki/Advanced_driver-assistance_systems "ADAS"), and also for Reinforcement Learning.
 
-This guide will help you set up the CARLA environment for RL. Most of my code here is inspired from [Intel Coach](https://github.com/NervanaSystems/coach "Intel Coach")'s setup of CARLA. I thought it'd be helpful to have a separte guide for this, to implement your own RL algorithms on top of it, instead of relying on Coach.
+This guide will help you set up the CARLA environment for RL. Most of my code here is inspired from [Intel Coach](https://github.com/NervanaSystems/coach "Intel Coach")'s setup of CARLA. I thought it'd be helpful to have a separte guide for this, to implement your own RL algorithms on top of it, instead of relying on Nervana Coach.
 
 ## Requirements:
 
-- Download the[ latest CARLA release from here](https://github.com/carla-simulator/carla/releases " latest CARLA release from here"). (As of the time of writing, CARLA is in Experimental stage for Windows OS)
+- Download the[ latest CARLA release from here](https://github.com/carla-simulator/carla/releases " latest CARLA release from here").   
+(As of the time of writing, CARLA is in Experimental stage for Windows OS)   
+(Tested using CARLA 0.7.0)
 - Any Debian-based OS (Preferably Ubuntu 16.04)
 - Python 3.x installed
 - Python Dependencies required:
     - numpy
-	- pygame
 	- pynput (For testing the environment manually) [Optional]
 
 ## Setting up the CARLA Path
@@ -116,9 +117,7 @@ info = output['info']
 ```
 
 ### Rendering the game after each action
-```python
-env.render()
-```
+CARLA [automatically renders everything](https://github.com/carla-simulator/carla/issues/286) as you play (take actions/pass controls). So no need of explicitly rendering.
 
 ## Testing CARLA game as a human
 
