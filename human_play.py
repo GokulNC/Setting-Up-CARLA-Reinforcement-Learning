@@ -11,7 +11,27 @@ brake_strength = -0.5
 
 action = [0.0, 0.0]
 reset = False
+total_reward = 0.0
+actions = {0: (0., 0.),
+				1: (0., -steering_strength),
+				2: (0., steering_strength),
+				3: (gas_strength, 0.),
+				4: (brake_strength, 0.),
+				5: (gas_strength, -steering_strength),
+				6: (gas_strength, steering_strength),
+				7: (brake_strength, -steering_strength),
+				8: (brake_strength, steering_strength)}
+
+action_map = {v: k for k, v in actions.items()} #https://stackoverflow.com/a/483833/5002496
+
+frame_skip = 1 #No. of frames to skip, i.e., the no. of frames in which to produce consecutive actions. Already CARLA is low FPS, so better be 1
+
 debug_logs = False
+
+if debug_logs:
+	frame_id = 0
+	total_frames = 100 # No. of frames once to print the FPS rate
+	start_time = time.time()
 
 def start_listen():
 	## Inspired from: https://pypi.python.org/pypi/pynput
@@ -38,34 +58,15 @@ def start_listen():
 		listener.join()
 
 
-print("Creating Environment & resetting")
+print("Creating Environment..")
 env = CarlaEnv(num_speedup_steps = 10)
-print("Environment created")
 
-actions = {0: (0., 0.),
-				1: (0., -steering_strength),
-				2: (0., steering_strength),
-				3: (gas_strength, 0.),
-				4: (brake_strength, 0.),
-				5: (gas_strength, -steering_strength),
-				6: (gas_strength, steering_strength),
-				7: (brake_strength, -steering_strength),
-				8: (brake_strength, steering_strength)}
-
-action_map = {v: k for k, v in actions.items()} #https://stackoverflow.com/a/483833/5002496
-
-frame_skip = 1 #No. of frames to skip, i.e., the no. of frames in which to produce consecutive actions. Already CARLA is low FPS, so better be 1
-
+print("Resetting the environment..")
 env.reset()
-total_reward = 0.0
 
 t = Thread(target=start_listen) # Start listening to key presses and update actions
 t.start()
 
-if debug_logs:
-	frame_id = 0
-	total_frames = 100 # No. of frames once to print the FPS rate
-	start_time = time.time()
 print("Start playing..... :)")
 while True:
 	
@@ -79,10 +80,9 @@ while True:
 
 	r = 0.0
 	for _ in range(frame_skip):
-		output = env.step(action_map[tuple(action)])
+		observation, reward, done, _ = env.step(action_map[tuple(action)])
 
-		r += output['reward']
-		done = output['done']
+		r += reward
 		if done: break
 
 	total_reward += r

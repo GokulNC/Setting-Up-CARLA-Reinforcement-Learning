@@ -6,7 +6,7 @@ Paper: http://proceedings.mlr.press/v78/dosovitskiy17a/dosovitskiy17a.pdf
 From the paper for RL:
     Algorithm used: A3C
     #Actors: 12
-    Training config: multiple CARLA servers (a total of 12, 4 GPUs, 3 instances each) (https://github.com/carla-simulator/carla/issues/25)
+    Training config: multiple CARLA servers (a total of 12, 4 GPUs, 3 instances each) (https://github.com/carla-simulator/carla/issues/25#issuecomment-344910085)
     # Steps: 10 million
     Time Taken: 12days
     FPS: 10

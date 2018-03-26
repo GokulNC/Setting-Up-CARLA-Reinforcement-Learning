@@ -3,8 +3,8 @@
  **Table of Contents**
 
    * [Setting up CARLA simulator environment for Reinforcement Learning](#setting-up-carla-simulator-environment-for-reinforcement-learning)
-         * [Introduction](#introduction)
-      * [Requirements:](#requirements)
+      * [Introduction](#introduction)
+      * [Requirements](#requirements)
       * [Setting up the CARLA Path](#setting-up-the-carla-path)
       * [Getting the required files for RL](#getting-the-required-files-for-rl)
       * [Playing with the Environment](#playing-with-the-environment)
@@ -21,14 +21,14 @@ If you didn't know, **[CARLA is an open-source simulator for autonomous driving 
 
 It can be used as an environment for training [ADAS](https://en.wikipedia.org/wiki/Advanced_driver-assistance_systems "ADAS"), and also for Reinforcement Learning.
 
-This guide will help you set up the CARLA environment for RL. Most of my code here is inspired from [Intel Coach](https://github.com/NervanaSystems/coach "Intel Coach")'s setup of CARLA. I thought it'd be helpful to have a separte guide for this, to implement your own RL algorithms on top of it, instead of relying on Nervana Coach.
+This guide will help you set up the CARLA environment for RL. Most of my code here is inspired from [Intel Coach](https://github.com/NervanaSystems/coach "Intel Coach")'s setup of CARLA. I thought it'd be helpful to have a separte guide for this, to implement our own RL algorithms on top of it, instead of relying on Nervana Coach.
 
-## Requirements:
+## Requirements
 
 - Download the[ latest CARLA release from here](https://github.com/carla-simulator/carla/releases " latest CARLA release from here").   
 (As of the time of writing, CARLA is in Experimental stage for Windows OS)   
 (Tested using CARLA 0.7.0)
-- Any Debian-based OS (Preferably Ubuntu 16.04)
+- Any Debian-based OS (Preferably Ubuntu 16.04 or later)
 - Python 3.x installed
 - Python Dependencies required:
     - numpy
@@ -56,6 +56,8 @@ All the required files for Environment's RL interface is present in the `Environ
 
 ## Playing with the Environment
 
+The environment interface provided here is more or less similar to that of [OpenAI Gym](https://github.com/openai/gym) for standardization purpose ;)
+
 ### To create an CARLA environment
 ```python
 from Environment.carla_environment_wrapper import CarlaEnvironmentWrapper as CarlaEnv
@@ -72,7 +74,7 @@ initial_values = env.reset()
 ### Taking an action
 
 ```python
-output = env.step(action_idx)
+observation, reward, done, info = env.step(action_idx)
 ```
 
 where **`action_idx`** is the discretized value of action corresponding to a specific action.
@@ -97,23 +99,24 @@ actions_description = ['NO-OP', 'TURN_LEFT', 'TURN_RIGHT', 'GAS', 'BRAKE',
 
 (Feel free to modify it as you see fit)
 
-### Reading values after taking an action
+### Values returned from env.step() (after taking an action)
 
 ```python
-# observation after taking the action
-observation= output['observation']
-# RGB image after taking the action
+# observation   :   observation after taking the action
+
+# To get RGB image from the observation:
 state = observation['observation']
-# immediate reward after taking the action
-reward = output['reward']
-# boolean True/False indicating if episode is finished
-# (collision has occured or time limit exceeded)
-done = output['done'] 
-# id of the last action taken
-last_action_idx = output['action']
-# information about the action taken & consequences
-# (empty as of now, feel free to implement)
-info = output['info']
+# TODO: In future, will add supoort for LiDAR sensors, etc. as required
+
+# reward       :   immediate reward after taking the action
+
+# done          :   boolean True/False indicating if episode is finished
+#                       (collision has occured or time limit exceeded)
+
+# info          :   information about the action taken & consequences
+# To get the id of the last action taken
+last_action_idx = info['action']
+# more info will be added later
 ```
 
 ### Rendering the game after each action

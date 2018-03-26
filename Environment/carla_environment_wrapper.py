@@ -37,7 +37,7 @@ key_map = {
 }
 
 class CarlaEnvironmentWrapper(EnvironmentWrapper):
-	def __init__(self, num_speedup_steps = 30):
+	def __init__(self, num_speedup_steps = 30, require_explicit_reset=True):
 		EnvironmentWrapper.__init__(self)
 
 		self.episode_max_time = 100000
@@ -86,18 +86,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			camera.set_rotation(0, 0, 0)
 			self.settings.add_sensor(camera)
 
-		# open the server
-		self.server = self._open_server()
-
-		# open the client
-		self.game = CarlaClient(self.host, self.port, timeout=99999999)
-		self.game.connect(connection_attempts=100) #It's taking a very long time for the server process to spawn, so the client needs to wait or try sufficient no. of times lol
-		scene = self.game.load_settings(self.settings)
-
-		# get available start positions
-		positions = scene.player_start_spots
-		self.num_pos = len(positions)
-		self.iterator_start_positions = 0
+		self.is_game_setup = False # Will be true only when setup_client_and_server() is called, either explicitly, or by reset()
 
 		# action space
 		self.discrete_controls = False
@@ -130,13 +119,38 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		self.autopilot = None
 
 		# env initialization
-		self.reset(True)
+		if not require_explicit_reset: self.reset(True)
 
 		# render
 		if self.is_rendered:
 			image = self.get_rendered_image()
 			self.renderer.create_screen(image.shape[1], image.shape[0])
 
+    def setup_client_and_server():
+        # open the server
+		self.server = self._open_server()
+
+		# open the client
+		self.game = CarlaClient(self.host, self.port, timeout=99999999)
+		self.game.connect(connection_attempts=100) #It's taking a very long time for the server process to spawn, so the client needs to wait or try sufficient no. of times lol
+		scene = self.game.load_settings(self.settings)
+
+		# get available start positions
+		positions = scene.player_start_spots
+		self.num_pos = len(positions)
+		self.iterator_start_positions = 0
+		self.is_game_setup = self.server and self.game
+		return
+
+    def close_client_and_server():
+        self.game.disconnect()
+        self.game = None
+        self._close_server() #Assuming it will close properly lol; TODO: poll() if it's closed
+        self.sever = None
+        self.is_game_setup = False
+        return
+        
+    
 	def _open_server(self):
         # Note: There is no way to disable rendering in CARLA as of now
         # https://github.com/carla-simulator/carla/issues/286
@@ -196,11 +210,13 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			print("Episode Ended")
 
 	def _take_action(self, action_idx):
+	    if not self.is_game_setup:
+	        print("Reset the environment duh by reset() before calling step()")
+	        sys.exit(1)
 		if type(action_idx) == int:
 			action = self.actions[action_idx]
 		else:
 			action = action_idx
-		self.last_action_idx = action
 
 		self.control = VehicleControl()
 		self.control.throttle = np.clip(action[0], 0, 1)
@@ -213,10 +229,18 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 
 		self.game.send_control(self.control)
 
-	def _restart_environment_episode(self, force_environment_reset=False):
-		self.iterator_start_positions += 1
-		if self.iterator_start_positions >= self.num_pos:
-			self.iterator_start_positions = 0
+	def _restart_environment_episode(self, force_environment_reset=True):
+	    
+	    if not force_environment_reset and not self.done and self.is_game_setup:
+	        print("Can't reset dude, episode ain't over yet")
+	        return None #User should handle this
+	    
+	    if not self.is_game_setup:
+	        setup_client_and_server()
+	    else:
+		    self.iterator_start_positions += 1
+		    if self.iterator_start_positions >= self.num_pos:
+			    self.iterator_start_positions = 0
 
 		try:
 			self.game.start_episode(self.iterator_start_positions)

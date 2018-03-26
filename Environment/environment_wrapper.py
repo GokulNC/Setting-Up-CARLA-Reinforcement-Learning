@@ -17,10 +17,9 @@ class EnvironmentWrapper(object):
 		self.reward = 0
 		self.done = False
 		self.default_action = 0
-		self.last_action_idx = 0
 		self.episode_idx = 0
 		self.last_episode_time = time.time()
-		self.info = []
+		self.info = {}
 		self.action_space_low = 0
 		self.action_space_high = 0
 		self.action_space_abs_range = 0
@@ -115,7 +114,7 @@ class EnvironmentWrapper(object):
 		:param action_idx: the action to perform on the environment
 		:return: A dictionary containing the state, reward, done flag and action
 		"""
-		self.last_action_idx = action_idx
+		self.info['action'] = action_idx
 
 		self._take_action(action_idx)
 
@@ -125,12 +124,7 @@ class EnvironmentWrapper(object):
 			self.render()
 
 		#self.state = self._preprocess_state(self.state)
-
-		return {'observation': self.observation,
-				'reward': self.reward,
-				'done': self.done,
-				'action': self.last_action_idx,
-				'info': self.info}
+        return self.observation, self.reward, self.done, self.info
 
 	def render(self):
 		"""
@@ -139,7 +133,7 @@ class EnvironmentWrapper(object):
 		print("No explicit rendering needed for CARLA bruh. Y u do dis?")
 		self.renderer.render_image(self.get_rendered_image())
 
-	def reset(self, force_environment_reset=False):
+	def reset(self, force_environment_reset=True):
 		"""
 		Reset the environment and all the variable of the wrapper
 		:param force_environment_reset: forces environment reset even when the game did not end
@@ -150,7 +144,6 @@ class EnvironmentWrapper(object):
 		self.done = False
 		self.episode_idx += 1
 		self.reward = 0.0
-		self.last_action_idx = 0
 		self._update_state()
 
 		# render before the preprocessing of the state, so that the image will be in its original quality
@@ -161,11 +154,7 @@ class EnvironmentWrapper(object):
 		# TODO: see also _update_state above
 		#self.state = self._preprocess_state(self.state)
 
-		return {'observation': self.observation,
-				'reward': self.reward,
-				'done': self.done,
-				'action': self.last_action_idx,
-				'info': self.info}
+        return self.observation
 
 	def get_random_action(self):
 		"""
