@@ -22,4 +22,6 @@ From the paper for RL:
     Reward function: The reward is a weighted sum of five terms: distance traveled towards the goal d in km, speed v in km/h, collision damage c,
             intersection with the sidewalk s (between 0 and 1), and intersection with the opposite lane o (between 0 and 1).
             (For more, ask here: https://github.com/carla-simulator/carla/issues/45)
-    
+
+Useful links:
+https://github.com/xfqbuaa/carla_simulator_Chinese

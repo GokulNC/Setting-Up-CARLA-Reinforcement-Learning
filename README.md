@@ -27,12 +27,11 @@ This guide will help you set up the CARLA environment for RL. Most of my code he
 
 - Download the[ latest CARLA release from here](https://github.com/carla-simulator/carla/releases " latest CARLA release from here").   
 (As of the time of writing, CARLA is in Experimental stage for Windows OS)   
-(Tested using CARLA 0.7.0)
+(Tested using CARLA 0.8.0)
 - Any Debian-based OS (Preferably Ubuntu 16.04 or later)
 - Python 3.x installed
-- Python Dependencies required:
-    - numpy
-	- pynput (For testing the environment manually) [Optional]
+- To install python packages:
+    `pip install -r requirements.txt`
 
 ## Setting up the CARLA Path
 
@@ -68,7 +67,7 @@ env = CarlaEnv()  # To create an env
 ### Resetting the environment
 ```python
 # returns the initial output values (as described in sections below)
-initial_values = env.reset()
+initial_observation = env.reset()
 ```
 
 ### Taking an action
@@ -91,7 +90,7 @@ actions = {0: [0., 0.],
 					6: [self.gas_strength, self.steering_strength],
 					7: [-self.brake_strength, -self.steering_strength],
 					8: [-self.brake_strength, self.steering_strength]}
-					
+
 actions_description = ['NO-OP', 'TURN_LEFT', 'TURN_RIGHT', 'GAS', 'BRAKE',
 									'GAS_AND_TURN_LEFT', 'GAS_AND_TURN_RIGHT',
 									'BRAKE_AND_TURN_LEFT', 'BRAKE_AND_TURN_RIGHT']
@@ -120,7 +119,14 @@ last_action_idx = info['action']
 ```
 
 ### Rendering the game after each action
-CARLA [automatically renders everything](https://github.com/carla-simulator/carla/issues/286) as you play (take actions/pass controls). So no need of explicitly rendering.
+CARLA [automatically renders everything](https://github.com/carla-simulator/carla/issues/286) as you play (take actions/pass controls). So no need of explicitly rendering.   
+If you need to render the camera camera view,
+```python
+env = CarlaEnv(is_render_enabled=True)  # To create an env
+
+# To render after each action:
+env.render()
+```
 
 ## Testing CARLA game as a human
 
@@ -129,6 +135,19 @@ I have included a file **`human_play.py`** which you can run by
 python human_play.py
 ```
 
-and play the game manually to get an understanding of it.
+and play the game manually to get an understanding of it. (Make sure the focus is on the terminal window)
 Use the arrow keys to play (`Up` to accelerate, `Down` to brake, `Left/Right` to steer)
 
+## Extras:
+
+- You can change resolution of server window, render in `Environment/carla_config.py`
+- You can change server actual resolution in `Environment/CarlaSettings.ini`
+- You can get segmented output by setting `is_segmented = True` in `carla_config.py` and `PostProcessing=SemanticSegmentation` in `CarlaSettings.ini`   
+(To play with your own cameras, feel free to modify things as described [here in docs](https://carla.readthedocs.io/en/latest/cameras_and_sensors/))
+
+
+## TODO in future:
+
+- As of now, the CarlaEnvironmentWrapper supports both continous & hardcoded discretized values. I think discretized action values can be removed
+- Make it Gym compliant (for benchmarks)
+- Add cameras dynamically as required, instead of relying on static `CarlaSettings.ini`

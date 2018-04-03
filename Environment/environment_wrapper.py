@@ -1,11 +1,12 @@
 import numpy as np
+np.set_printoptions(threshold=np.inf)
 from Environment.utils import *
 from Environment.renderer import Renderer
-## Note: I have kept the renderer.py as it is eventhough CARLA doesn't use it, since if in future CARLA enables an option to toggle rendering, it'll be useful
+import Environment.carla_config as carla_config
 import operator, time
 
 class EnvironmentWrapper(object):
-	def __init__(self):
+	def __init__(self, is_render_enabled=False):
 		"""
 		:param tuning_parameters:
 		:type tuning_parameters: Preset
@@ -35,15 +36,18 @@ class EnvironmentWrapper(object):
 		self.record_video_every = 1000
 		#self.env_id = self.tp.env.level
 		self.video_path = 'temp/experiment-videos'
-		self.is_rendered = False
+		self.is_render_enabled = is_render_enabled
 		self.seed = None
 		self.frame_skip = 1
-		self.human_control = False # Otherwise it'll automatically render()
+		self.automatic_render = False # Otherwise it'll automatically render()
 		self.wait_for_explicit_human_action = False
-		self.is_rendered = self.is_rendered or self.human_control
 		self.game_is_open = True
-		if self.is_rendered: self.renderer = Renderer()
+		if self.is_render_enabled or self.automatic_render: self.renderer = Renderer()
+		else: self.renderer = None
 		self.observation = None
+
+		if carla_config.save_screens:
+			self.frame_no = 0
 
 	@property
 	def measurements(self):
@@ -56,7 +60,7 @@ class EnvironmentWrapper(object):
 	# @property
 	# def observation(self):
 	# 	assert False
-    #
+	#
 	# @observation.setter
 	# def observation(self, value):
 	# 	assert False
@@ -120,18 +124,28 @@ class EnvironmentWrapper(object):
 
 		self._update_state()
 
-		if self.is_rendered:
+		if self.is_render_enabled:
 			self.render()
 
 		#self.state = self._preprocess_state(self.state)
-        return self.observation, self.reward, self.done, self.info
+		return self.observation, self.reward, self.done, self.info
 
 	def render(self):
 		"""
 		Call the environment function for rendering to the screen
 		"""
-		print("No explicit rendering needed for CARLA bruh. Y u do dis?")
-		self.renderer.render_image(self.get_rendered_image())
+		if self.renderer is None: return
+
+		if carla_config.is_segmented:
+			img = convert_segmented_to_rgb(carla_config.colors_segment, self.get_rendered_image())
+		else:
+			img = self.get_rendered_image()
+		self.renderer.render_image(img)
+		if carla_config.save_screens:
+			if self.frame_no%carla_config.save_freq == 0: save_image(img, "screens/Game_"+str(time.time())+".png")
+			self.frame_no += 1
+
+		#print(str(img))
 
 	def reset(self, force_environment_reset=True):
 		"""
@@ -147,14 +161,14 @@ class EnvironmentWrapper(object):
 		self._update_state()
 
 		# render before the preprocessing of the state, so that the image will be in its original quality
-		if self.is_rendered:
+		if self.is_render_enabled:
 			self.render()
 
 		# TODO BUG: if the environment has not been reset, _preprocessed_state will be running on an already preprocessed state
 		# TODO: see also _update_state above
 		#self.state = self._preprocess_state(self.state)
 
-        return self.observation
+		return self.observation
 
 	def get_random_action(self):
 		"""

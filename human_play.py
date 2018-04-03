@@ -59,7 +59,7 @@ def start_listen():
 
 
 print("Creating Environment..")
-env = CarlaEnv(num_speedup_steps = 10)
+env = CarlaEnv(is_render_enabled=False, num_speedup_steps = 10)
 
 print("Resetting the environment..")
 env.reset()
@@ -69,7 +69,7 @@ t.start()
 
 print("Start playing..... :)")
 while True:
-	
+
 	if debug_logs:
 		print("Action: "+str(action)+" - ID: "+str(action_map[tuple(action)]))
 		frame_id = (frame_id+1) % total_frames
@@ -81,7 +81,7 @@ while True:
 	r = 0.0
 	for _ in range(frame_skip):
 		observation, reward, done, _ = env.step(action_map[tuple(action)])
-
+		#env.render()
 		r += reward
 		if done: break
 

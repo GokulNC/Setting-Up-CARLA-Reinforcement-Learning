@@ -37,8 +37,8 @@ key_map = {
 }
 
 class CarlaEnvironmentWrapper(EnvironmentWrapper):
-	def __init__(self, num_speedup_steps = 30, require_explicit_reset=True):
-		EnvironmentWrapper.__init__(self)
+	def __init__(self, num_speedup_steps = 30, require_explicit_reset=True, is_render_enabled=False):
+		EnvironmentWrapper.__init__(self, is_render_enabled)
 
 		self.episode_max_time = 100000
 		self.allow_braking = True
@@ -47,6 +47,8 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		# server configuration
 		self.server_height = 256
 		self.server_width = 360
+		self.render_height = 256
+		self.render_width = 360
 		self.port = get_open_port()
 		self.host = 'localhost'
 		self.level = 'town2' #Why town2: https://github.com/carla-simulator/carla/issues/10#issuecomment-342483829
@@ -122,12 +124,12 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		if not require_explicit_reset: self.reset(True)
 
 		# render
-		if self.is_rendered:
+		if self.automatic_render:
 			image = self.get_rendered_image()
 			self.renderer.create_screen(image.shape[1], image.shape[0])
 
-    def setup_client_and_server():
-        # open the server
+	def setup_client_and_server(self):
+		# open the server
 		self.server = self._open_server()
 
 		# open the client
@@ -142,19 +144,20 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		self.is_game_setup = self.server and self.game
 		return
 
-    def close_client_and_server():
-        self.game.disconnect()
-        self.game = None
-        self._close_server() #Assuming it will close properly lol; TODO: poll() if it's closed
-        self.sever = None
-        self.is_game_setup = False
-        return
-        
-    
+	def close_client_and_server():
+		self.game.disconnect()
+		self.game = None
+		self._close_server() #Assuming it will close properly lol; TODO: poll() if it's closed
+		self.sever = None
+		self.is_game_setup = False
+		return
+
+
 	def _open_server(self):
-        # Note: There is no way to disable rendering in CARLA as of now
-        # https://github.com/carla-simulator/carla/issues/286
-        # decrease the window resolution if you want to see if performance increases
+		# Note: There is no way to disable rendering in CARLA as of now
+		# https://github.com/carla-simulator/carla/issues/286
+		# decrease the window resolution if you want to see if performance increases
+		# Command: $CARLA_ROOT/CarlaUE4.sh /Game/Maps/Town02 -benchmark -carla-server -fps=15 -world-port=9876 -windowed -ResX=480 -ResY=360 -carla-no-hud
 		with open(self.log_path, "wb") as out:
 			cmd = [path.join(environ.get('CARLA_ROOT'), 'CarlaUE4.sh'), self.map,
 								  "-benchmark", "-carla-server", "-fps=10", "-world-port={}".format(self.port),
@@ -163,7 +166,6 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			if self.config:
 				cmd.append("-carla-settings={}".format(self.config))
 			p = subprocess.Popen(cmd, stdout=out, stderr=out)
-
 		return p
 
 	def _close_server(self):
@@ -210,9 +212,9 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			print("Episode Ended")
 
 	def _take_action(self, action_idx):
-	    if not self.is_game_setup:
-	        print("Reset the environment duh by reset() before calling step()")
-	        sys.exit(1)
+		if not self.is_game_setup:
+			print("Reset the environment duh by reset() before calling step()")
+			sys.exit(1)
 		if type(action_idx) == int:
 			action = self.actions[action_idx]
 		else:
@@ -230,17 +232,18 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		self.game.send_control(self.control)
 
 	def _restart_environment_episode(self, force_environment_reset=True):
-	    
-	    if not force_environment_reset and not self.done and self.is_game_setup:
-	        print("Can't reset dude, episode ain't over yet")
-	        return None #User should handle this
-	    
-	    if not self.is_game_setup:
-	        setup_client_and_server()
-	    else:
-		    self.iterator_start_positions += 1
-		    if self.iterator_start_positions >= self.num_pos:
-			    self.iterator_start_positions = 0
+
+		if not force_environment_reset and not self.done and self.is_game_setup:
+			print("Can't reset dude, episode ain't over yet")
+			return None #User should handle this
+
+		if not self.is_game_setup:
+			self.setup_client_and_server()
+			if self.is_render_enabled: self.renderer.create_screen(self.render_width, self.render_height)
+		else:
+			self.iterator_start_positions += 1
+			if self.iterator_start_positions >= self.num_pos:
+				self.iterator_start_positions = 0
 
 		try:
 			self.game.start_episode(self.iterator_start_positions)
@@ -251,7 +254,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		# start the game with some initial speed
 		observation = None
 		for i in range(self.num_speedup_steps):
-			observation = self.step([1.0, 0])['observation']
+			observation, reward, done, _ = self.step([1.0, 0])
 		self.observation = observation
 
 		return observation
