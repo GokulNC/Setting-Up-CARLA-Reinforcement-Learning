@@ -120,7 +120,7 @@ last_action_idx = info['action']
 
 ### Rendering the game after each action
 CARLA [automatically renders everything](https://github.com/carla-simulator/carla/issues/286) as you play (take actions/pass controls). So no need of explicitly rendering.   
-If you need to render the camera camera view,
+If you need to render the camera view,
 ```python
 env = CarlaEnv(is_render_enabled=True)  # To create an env
 
@@ -135,16 +135,16 @@ I have included a file **`human_play.py`** which you can run by
 python human_play.py
 ```
 
-and play the game manually to get an understanding of it. (Make sure the focus is on the terminal window)
+and play the game manually to get an understanding of it. (Make sure the focus is on the terminal window)   
 Use the arrow keys to play (`Up` to accelerate, `Down` to brake, `Left/Right` to steer)
 
 ## Extras:
 
 - You can change resolution of server window, render in `Environment/carla_config.py`
 - You can get the following outputs, instead of just RGB image:
-- - For Segmentated output: `env = CarlaEnv(cameras=['SemanticSegmentation'])` and `segmented_output = observation['segmented_image']`
-- - For depth output: `env = CarlaEnv(cameras=['Depth'])` and `segmented_output = observation['depth_map']`
-- - (Note: You can also use a combination of everything. For RGB output, cameras=['SceneFinal'])
+  - For Segmentated output: `env = CarlaEnv(cameras=['SemanticSegmentation'])` and `segmented_output = observation['segmented_image']`
+  - For depth output: `env = CarlaEnv(cameras=['Depth'])` and `depth_map = observation['depth_map']`
+  - (Note: You can also use a combination of everything. For RGB output, `cameras=['SceneFinal']`)   
 (To play with your own cameras, feel free to modify things as described [here in docs](https://carla.readthedocs.io/en/latest/cameras_and_sensors/))
 
 
