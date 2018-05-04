@@ -1,4 +1,5 @@
 from Environment.carla_environment_wrapper import CarlaEnvironmentWrapper as CarlaEnv
+import numpy as np
 #import keyboard
 # import pygame
 # from pygame.locals import *
@@ -34,7 +35,7 @@ if debug_logs:
 	start_time = time.time()
 
 def start_listen():
-	## Inspired from: https://pypi.python.org/pypi/pynput
+	## Listen for keypresses to control game via Terminal. Inspired from: https://pypi.python.org/pypi/pynput
 	global action, reset, steering_strength, gas_strength, brake_strength
 
 	def on_press(key):
@@ -68,6 +69,7 @@ t = Thread(target=start_listen) # Start listening to key presses and update acti
 t.start()
 
 print("Start playing..... :)")
+
 while True:
 
 	if debug_logs:
@@ -84,7 +86,7 @@ while True:
 		#env.render()
 		r += reward
 		if done: break
-
+	
 	total_reward += r
 	if reset:
 		done = True

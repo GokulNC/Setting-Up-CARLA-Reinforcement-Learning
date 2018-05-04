@@ -112,6 +112,38 @@ def convert_segmented_to_rgb(label_colours, segmented_img):
 	rgb[:,:,2] = b
 
 	return rgb
+	
+def coalesce_depth_and_segmentation(segmented_img, classes_combo, depth_map, depth_scaler):
+	'''
+	Input:	Takes segmentated image and depth map
+	Output:	Creates an array having no. of channels = no. of classes, each channel for each class (or some classes can be joined into a single channel)
+			Each value in each channel output[channel][w][h] is of range (0-1], corresponding to the normalized depth of the specific class.
+			For all other classes, output[channel][w][h] = 0
+	Arguments:
+		segmented_img: Sematically segmented image
+		depth_map: Depth of the image
+		classes_combo: List of tuples, each denoting which channel will have what classes' data (list length will be no. of channels)
+		depth_scaler: The value by which will be divided to bring down to the scale [0,1]
+	'''
+	assert segmented_img.shape == depth_map.shape, "Dimensions of segmented image and depth map doesn't match"
+	
+	num_channels = len(classes_combo)
+	output = np.full((num_channels,) + depth_map.shape, False)
+	
+	class_combo = [(i,) if type(i) is int else i for i in class_combo]
+	
+	for i in range(num_channels):
+		output[i] = np.any([segmented_img==j for j in classes_combo[i]], axis=0)
+		output[i] = (np.multiply(output[i]*depth_map))/depth_scaler
+	return output
+	
+def is_process_alive(pid):
+	## Source: https://stackoverflow.com/questions/568271/how-to-check-if-there-exists-a-process-with-a-given-pid-in-python
+	try:
+		os.kill(pid, 0)
+	except OSError:
+		return False
+	return True
 
 def break_file_path(path):
 	base = os.path.splitext(os.path.basename(path))[0]

@@ -1,0 +1,874 @@
+Increasing per-process limit of core file size to infinity.
+LogPlatformFile: Using cached read wrapper
+LogInit: Display: RandInit(0) SRandInit(0).
+LogTaskGraph: Started task graph with 5 named threads and 14 total threads with 3 sets of task threads.
+LogStats: Stats thread started at 0.064759
+LogPluginManager: Mounting plugin Carla
+LogPluginManager: Mounting plugin PhysXVehicles
+LogPluginManager: Mounting plugin PerformanceMonitor
+LogPluginManager: Mounting plugin Paper2D
+LogPluginManager: Mounting plugin LightPropagationVolume
+LogPluginManager: Mounting plugin FacialAnimation
+LogPluginManager: Mounting plugin CharacterAI
+LogPluginManager: Mounting plugin AvfMedia
+LogPluginManager: Mounting plugin ImgMedia
+LogPluginManager: Mounting plugin MediaCompositing
+LogPluginManager: Mounting plugin WmfMedia
+LogPluginManager: Mounting plugin TcpMessaging
+LogPluginManager: Mounting plugin UdpMessaging
+LogPluginManager: Mounting plugin ActorSequence
+LogPluginManager: Mounting plugin OnlineSubsystem
+LogPluginManager: Mounting plugin OnlineSubsystemNull
+LogPluginManager: Mounting plugin OnlineSubsystemUtils
+LogPluginManager: Mounting plugin ArchVisCharacter
+LogPluginManager: Mounting plugin CableComponent
+LogPluginManager: Mounting plugin CustomMeshComponent
+LogPluginManager: Mounting plugin ImmediatePhysics
+LogPluginManager: Mounting plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting plugin ProceduralMeshComponent
+LogPluginManager: Mounting plugin RuntimePhysXCooking
+[33mLogFileManager: Warning: ReadFile failed: Count=0 Length=4096 Error=errno=21 (Is a directory) for file 
+[0mLogInit: Using libcurl 7.48.0-DEV
+LogInit:  - built for x86_64-unknown-linux-gnu
+LogInit:  - supports SSL with OpenSSL/1.0.2h
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_TLSAUTH_SRP
+LogInit:  Libcurl: checking if '/etc/pki/tls/certs/ca-bundle.crt' exists
+LogInit:  Libcurl: checking if '/etc/ssl/certs/ca-certificates.crt' exists
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - CertBundlePath = /etc/ssl/certs/ca-certificates.crt  - Libcurl will set CURLOPT_CAINFO to it
+LogInit: Build: ++UE4+Release-4.18-CL-0
+LogInit: Engine Version: 4.18.3-0+++UE4+Release-4.18
+LogInit: Compatible Engine Version: 4.18.0-0+++UE4+Release-4.18
+LogInit: Net CL: 0
+LogDevObjectVersion: Number of dev versions registered: 16
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 2
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 20
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 30
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 0
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 0
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 20
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 4
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 0
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 1
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 12
+LogInit: Compiled (64-bit): Mar 27 2018 11:59:28
+LogInit: Compiled with Clang: 3.9.1 (tags/RELEASE_391/rc2)
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE4+Release-4.18
+LogInit: Command line:  /Game/Maps/Town02 -benchmark -carla-server -fps=10 -world-port=42331 -windowed -ResX=256 -ResY=256 -carla-no-hud
+LogInit: Base directory: /home/mcw/dependencies/CARLA/CarlaUE4/Binaries/Linux/
+LogInit: Installed Engine Build: 0
+LogInit: Presizing for max 2097152 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogStreaming: Display: Async Loading initialized: Event Driven Loader: true, Async Loading Thread: false
+LogInit: Object subsystem initialized
+[2018.05.04-04.51.27:646][  0]LogInit: Initializing SDL.
+[2018.05.04-04.51.28:062][  0]LogInit: Using SDL_WINDOW_OPENGL
+[2018.05.04-04.51.28:062][  0]LogInit: Initialized SDL 2.0.5 revision: 11184 (hg-11184:04063928c4a8 with EpicExtensions) (compiled against 2.0.5)
+[2018.05.04-04.51.28:062][  0]LogInit: Display metrics:
+[2018.05.04-04.51.28:062][  0]LogInit:   PrimaryDisplayWidth: 1920
+[2018.05.04-04.51.28:062][  0]LogInit:   PrimaryDisplayHeight: 1080
+[2018.05.04-04.51.28:062][  0]LogInit:   PrimaryDisplayWorkAreaRect:
+[2018.05.04-04.51.28:062][  0]LogInit:     Left=65, Top=24, Right=1920, Bottom=1080
+[2018.05.04-04.51.28:062][  0]LogInit:   VirtualDisplayRect:
+[2018.05.04-04.51.28:062][  0]LogInit:     Left=65, Top=24, Right=1920, Bottom=1080
+[2018.05.04-04.51.28:062][  0]LogInit:   TitleSafePaddingSize: X=0.000 Y=0.000
+[2018.05.04-04.51.28:062][  0]LogInit:   ActionSafePaddingSize: X=0.000 Y=0.000
+[2018.05.04-04.51.28:062][  0]LogInit:   Number of monitors: 1
+[2018.05.04-04.51.28:062][  0]LogInit:     Monitor 0
+[2018.05.04-04.51.28:062][  0]LogInit:       Name: DELL S2240M 21"
+[2018.05.04-04.51.28:062][  0]LogInit:       ID: display0
+[2018.05.04-04.51.28:062][  0]LogInit:       NativeWidth: 1920
+[2018.05.04-04.51.28:062][  0]LogInit:       NativeHeight: 1080
+[2018.05.04-04.51.28:062][  0]LogInit:       bIsPrimary: true
+[2018.05.04-04.51.28:063][  0]LogLinux: Selected Device Profile: [LinuxNoEditor]
+[2018.05.04-04.51.28:063][  0]LogInit: Applying CVar settings loaded from the selected device profile: [LinuxNoEditor]
+[2018.05.04-04.51.28:076][  0]LogInit: Linux hardware info:
+[2018.05.04-04.51.28:076][  0]LogInit:  - we are the first instance of this executable
+[2018.05.04-04.51.28:076][  0]LogInit:  - this process' id (pid) is 29371, parent process' id (ppid) is 29364
+[2018.05.04-04.51.28:076][  0]LogInit:  - we are not running under debugger
+[2018.05.04-04.51.28:076][  0]LogInit:  - machine network name is 'MCW'
+[2018.05.04-04.51.28:076][  0]LogInit:  - user name is 'mcw' (mcw)
+[2018.05.04-04.51.28:076][  0]LogInit:  - we're logged in locally
+[2018.05.04-04.51.28:076][  0]LogInit:  - we're running with rendering
+[2018.05.04-04.51.28:076][  0]LogInit:  - CPU: GenuineIntel '        Intel(R) Core(TM) i5-3330 CPU @ 3.00GHz' (signature: 0x306A9)
+[2018.05.04-04.51.28:076][  0]LogInit:  - Number of physical cores available for the process: 4
+[2018.05.04-04.51.28:076][  0]LogInit:  - Number of logical cores available for the process: 4
+[2018.05.04-04.51.28:076][  0]LogInit:  - Cache line size: 64
+[2018.05.04-04.51.28:076][  0]LogInit:  - Memory allocator used: binned2
+[2018.05.04-04.51.28:076][  0]LogLinux: Benchmarking clocks:
+[2018.05.04-04.51.28:076][  0]LogLinux:  - CLOCK_REALTIME (id=0) can sustain 46043309 (46043K, 46M) calls per second without zero deltas.
+[2018.05.04-04.51.28:076][  0]LogLinux:  - CLOCK_MONOTONIC (id=1) can sustain 48151869 (48152K, 48M) calls per second without zero deltas.
+[2018.05.04-04.51.28:076][  0]LogLinux:  - CLOCK_MONOTONIC_RAW (id=4) can sustain 3207249 (3207K, 3M) calls per second without zero deltas.
+[2018.05.04-04.51.28:076][  0]LogLinux:  - CLOCK_MONOTONIC_COARSE (id=6) can sustain 136139073 (136139K, 136M) calls per second with 99.999809% zero deltas.
+[2018.05.04-04.51.28:076][  0]LogLinux: Selected clock_id 1 (CLOCK_MONOTONIC) since it is the fastest support clock without zero deltas.
+[2018.05.04-04.51.28:076][  0]LogInit: Linux-specific commandline switches:
+[2018.05.04-04.51.28:076][  0]LogInit:  -nodwarf (currently OFF): suppress parsing of DWARF debug info (callstacks will be generated faster, but won't have line numbers)
+[2018.05.04-04.51.28:076][  0]LogInit:  -ansimalloc - use malloc()/free() from libc (useful for tools like valgrind and electric fence)
+[2018.05.04-04.51.28:076][  0]LogInit:  -jemalloc - use jemalloc for all memory allocation
+[2018.05.04-04.51.28:076][  0]LogInit:  -binnedmalloc - use binned malloc  for all memory allocation
+[2018.05.04-04.51.28:076][  0]LogInit:  -httpproxy=ADDRESS:PORT - redirects HTTP requests to a proxy (only supported if compiled with libcurl)
+[2018.05.04-04.51.28:076][  0]LogInit:  -reuseconn - allow libcurl to reuse HTTP connections (only matters if compiled with libcurl)
+[2018.05.04-04.51.28:076][  0]LogInit:  -virtmemkb=NUMBER - sets process virtual memory (address space) limit (overrides VirtualMemoryLimitInKB value from .ini)
+[2018.05.04-04.51.28:077][  0]LogInit:  - Physical RAM available (not considering process quota): 8 GB (7874 MB, 8063804 KB, 8257335296 bytes)
+[2018.05.04-04.51.28:078][  0]LogInit: Using OS detected language (en-IN).
+[2018.05.04-04.51.28:078][  0]LogInit: Using OS detected locale (en-IN).
+[2018.05.04-04.51.28:080][  0]LogTextLocalizationManager: No specific localization for 'en-IN' exists, so the 'en' localization will be used.
+[2018.05.04-04.51.28:140][  0]LogRHI: Initializing OpenGL RHI
+[2018.05.04-04.51.28:140][  0]LogRHI:   GL_VENDOR: NVIDIA Corporation
+[2018.05.04-04.51.28:140][  0]LogRHI:   GL_RENDERER: Tesla C2050/PCIe/SSE2
+[2018.05.04-04.51.28:140][  0]LogRHI:   GL_VERSION: 4.3.0 NVIDIA 384.111
+[2018.05.04-04.51.28:140][  0]LogRHI:   GL_SHADING_LANGUAGE_VERSION: 4.30 NVIDIA via Cg compiler
+[2018.05.04-04.51.28:140][  0]LogRHI: OpenGL Extensions:
+[2018.05.04-04.51.28:140][  0]LogRHI:   GL_AMD_multi_draw_indirect
+[2018.05.04-04.51.28:140][  0]LogRHI:   GL_ARB_arrays_of_arrays
+[2018.05.04-04.51.28:140][  0]LogRHI:   GL_ARB_base_instance
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_blend_func_extended
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_buffer_storage
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_clear_buffer_object
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_clear_texture
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_clip_control
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_color_buffer_float
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_compressed_texture_pixel_storage
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_conservative_depth
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_compute_shader
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_compute_variable_group_size
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_conditional_render_inverted
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_copy_buffer
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_copy_image
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_cull_distance
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_debug_output
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_depth_buffer_float
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_depth_clamp
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_depth_texture
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_derivative_control
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_direct_state_access
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_draw_buffers
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_draw_buffers_blend
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_draw_indirect
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_draw_elements_base_vertex
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_draw_instanced
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_enhanced_layouts
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_ES2_compatibility
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_ES3_compatibility
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_ES3_1_compatibility
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_ES3_2_compatibility
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_explicit_attrib_location
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_explicit_uniform_location
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_fragment_coord_conventions
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_fragment_layer_viewport
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_fragment_program
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_fragment_program_shadow
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_fragment_shader
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_framebuffer_no_attachments
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_framebuffer_object
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_framebuffer_sRGB
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_geometry_shader4
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_get_program_binary
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_get_texture_sub_image
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_gl_spirv
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_gpu_shader5
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_gpu_shader_fp64
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_gpu_shader_int64
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_half_float_pixel
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_half_float_vertex
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_imaging
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_indirect_parameters
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_instanced_arrays
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_internalformat_query
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_internalformat_query2
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_invalidate_subdata
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_map_buffer_alignment
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_map_buffer_range
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_multi_bind
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_multi_draw_indirect
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_multisample
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_multitexture
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_occlusion_query
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_occlusion_query2
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_parallel_shader_compile
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_pipeline_statistics_query
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_pixel_buffer_object
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_point_parameters
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_point_sprite
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_program_interface_query
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_provoking_vertex
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_query_buffer_object
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_robust_buffer_access_behavior
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_robustness
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_sample_shading
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_sampler_objects
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_seamless_cube_map
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_separate_shader_objects
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_atomic_counter_ops
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_atomic_counters
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_bit_encoding
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_draw_parameters
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_group_vote
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_image_load_store
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_image_size
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_objects
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_precision
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_storage_buffer_object
+[2018.05.04-04.51.28:141][  0]LogRHI:   GL_ARB_shader_subroutine
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_shader_texture_image_samples
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_shader_texture_lod
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_shading_language_100
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_shading_language_420pack
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_shading_language_include
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_shading_language_packing
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_shadow
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_sparse_buffer
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_sparse_texture
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_stencil_texturing
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_sync
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_tessellation_shader
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_barrier
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_border_clamp
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_buffer_object
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_buffer_object_rgb32
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_buffer_range
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_compression
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_compression_bptc
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_compression_rgtc
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_cube_map
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_cube_map_array
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_env_add
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_env_combine
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_env_crossbar
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_env_dot3
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_float
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_gather
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_mirror_clamp_to_edge
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_mirrored_repeat
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_multisample
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_non_power_of_two
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_query_levels
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_query_lod
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_rectangle
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_rg
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_rgb10_a2ui
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_stencil8
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_storage
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_storage_multisample
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_swizzle
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_texture_view
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_timer_query
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_transform_feedback2
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_transform_feedback3
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_transform_feedback_instanced
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_transform_feedback_overflow_query
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_transpose_matrix
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_uniform_buffer_object
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_array_bgra
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_array_object
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_attrib_64bit
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_attrib_binding
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_buffer_object
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_program
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_shader
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_type_10f_11f_11f_rev
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_vertex_type_2_10_10_10_rev
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_viewport_array
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ARB_window_pos
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ATI_draw_buffers
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ATI_texture_float
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_ATI_texture_mirror_once
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_S3_s3tc
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_texture_env_add
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_abgr
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_bgra
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_bindable_uniform
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_blend_color
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_blend_equation_separate
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_blend_func_separate
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_blend_minmax
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_blend_subtract
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_compiled_vertex_array
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_Cg_shader
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_depth_bounds_test
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_direct_state_access
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_draw_buffers2
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_draw_instanced
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_draw_range_elements
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_fog_coord
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_framebuffer_blit
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_framebuffer_multisample
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXTX_framebuffer_mixed_formats
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_framebuffer_multisample_blit_scaled
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_framebuffer_object
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_framebuffer_sRGB
+[2018.05.04-04.51.28:142][  0]LogRHI:   GL_EXT_geometry_shader4
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_gpu_program_parameters
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_gpu_shader4
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_multi_draw_arrays
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_packed_depth_stencil
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_packed_float
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_packed_pixels
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_pixel_buffer_object
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_point_parameters
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_polygon_offset_clamp
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_provoking_vertex
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_rescale_normal
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_secondary_color
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_separate_shader_objects
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_separate_specular_color
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_shader_image_load_store
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_shader_integer_mix
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_shadow_funcs
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_stencil_two_side
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_stencil_wrap
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture3D
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_array
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_buffer_object
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_compression_dxt1
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_compression_latc
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_compression_rgtc
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_compression_s3tc
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_cube_map
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_edge_clamp
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_env_combine
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_env_dot3
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_filter_anisotropic
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_integer
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_lod
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_lod_bias
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_mirror_clamp
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_object
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_shared_exponent
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_sRGB
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_sRGB_decode
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_storage
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_texture_swizzle
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_timer_query
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_transform_feedback2
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_vertex_array
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_vertex_array_bgra
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_vertex_attrib_64bit
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_window_rectangles
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_x11_sync_object
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_EXT_import_sync_object
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_robustness_video_memory_purge
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NVX_shared_sync_object
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_IBM_rasterpos_clip
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_IBM_texture_mirrored_repeat
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_KHR_context_flush_control
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_KHR_debug
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_KHR_no_error
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_KHR_robust_buffer_access_behavior
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_KHR_robustness
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_KTX_buffer_region
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_alpha_to_coverage_dither_control
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_bindless_multi_draw_indirect
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_bindless_multi_draw_indirect_count
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_blend_equation_advanced
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_blend_square
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_command_list
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_compute_program5
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_conditional_render
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_copy_depth_to_color
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_copy_image
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_depth_buffer_float
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_depth_clamp
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_draw_texture
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_ES1_1_compatibility
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_ES3_1_compatibility
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_explicit_multisample
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_fence
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_float_buffer
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_fog_distance
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_fragment_program
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_fragment_program_option
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_fragment_program2
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_framebuffer_multisample_coverage
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_geometry_shader4
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_gpu_program4
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_internalformat_sample_query
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_gpu_program4_1
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_gpu_program5
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_gpu_program5_mem_extended
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_gpu_program_fp64
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_gpu_shader5
+[2018.05.04-04.51.28:143][  0]LogRHI:   GL_NV_half_float
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_light_max_exponent
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_multisample_coverage
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_multisample_filter_hint
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_occlusion_query
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_packed_depth_stencil
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_parameter_buffer_object
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_parameter_buffer_object2
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_path_rendering
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_pixel_data_range
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_point_sprite
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_primitive_restart
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_register_combiners
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_register_combiners2
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_shader_atomic_counters
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_shader_atomic_float
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_shader_buffer_load
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_shader_storage_buffer_object
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texgen_reflection
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texture_barrier
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texture_compression_vtc
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texture_env_combine4
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texture_multisample
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texture_rectangle
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texture_shader
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texture_shader2
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_texture_shader3
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_transform_feedback
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_transform_feedback2
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_uniform_buffer_unified_memory
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vdpau_interop
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_array_range
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_array_range2
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_attrib_integer_64bit
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_buffer_unified_memory
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_program
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_program1_1
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_program2
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_program2_option
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_vertex_program3
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NVX_sysmem_buffer
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NVX_conditional_render
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NVX_gpu_memory_info
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_NV_shader_thread_group
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_KHR_blend_equation_advanced
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_SGIS_generate_mipmap
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_SGIS_texture_lod
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_SGIX_depth_texture
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_SGIX_shadow
+[2018.05.04-04.51.28:144][  0]LogRHI:   GL_SUN_slice_accum
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_TEXTURE_SIZE: 16384
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_CUBE_MAP_TEXTURE_SIZE: 16384
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_ARRAY_TEXTURE_LAYERS: 2048
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_3D_TEXTURE_SIZE: 2048
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_RENDERBUFFER_SIZE: 16384
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_TEXTURE_IMAGE_UNITS: 32
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_DRAW_BUFFERS: 8
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_COLOR_ATTACHMENTS: 8
+[2018.05.04-04.51.28:145][  0]LogRHI:   GL_MAX_SAMPLES: 32
+[2018.05.04-04.51.28:146][  0]LogRHI:   GL_MAX_COLOR_TEXTURE_SAMPLES: 32
+[2018.05.04-04.51.28:146][  0]LogRHI:   GL_MAX_DEPTH_TEXTURE_SAMPLES: 32
+[2018.05.04-04.51.28:146][  0]LogRHI:   GL_MAX_INTEGER_SAMPLES: 32
+[2018.05.04-04.51.28:146][  0]LogRHI:   GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS: 192
+[2018.05.04-04.51.28:146][  0]LogRHI:   GL_MAX_VERTEX_ATTRIBS: 16
+[2018.05.04-04.51.28:146][  0]LogRHI:   GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT: 16
+[2018.05.04-04.51.28:146][  0]LogRHI: OpenGL MajorVersion = 4, MinorVersion = 3, ShaderPlatform = GLSL_430, FeatureLevel = SM5
+[2018.05.04-04.51.28:155][  0]LogRHI: Texture pool is 1881 MB (70% of 2688 MB)
+[2018.05.04-04.51.28:163][  0]LogMaterial: Verifying Global Shaders for GLSL_430
+[2018.05.04-04.51.28:163][  0]LogSlate: Using Freetype 2.6.0
+[2018.05.04-04.51.28:164][  0]LogSlate: SlateFontCache - WITH_FREETYPE: 1, WITH_HARFBUZZ: 0
+[2018.05.04-04.51.28:164][  0]LogSlate: SlateFontCache - WITH_FREETYPE: 1, WITH_HARFBUZZ: 0
+[2018.05.04-04.51.28:281][  0]LogAssetRegistry: FAssetRegistry took 0.0322 seconds to start up
+[2018.05.04-04.51.28:374][  0]LogPackageLocalizationCache: Processed 5 localized package path(s) for 2 prioritized culture(s) in 0.004615 seconds
+[2018.05.04-04.51.28:374][  0]LogPakFile: New pak file ../../../CarlaUE4/Content/Paks/CarlaUE4-LinuxNoEditor.pak added to pak precacher.
+[2018.05.04-04.51.28:375][  0]LogLinux: Selected Device Profile: [LinuxNoEditor]
+[2018.05.04-04.51.28:434][  0]LogNetVersion: CarlaUE4 , NetCL: 0, EngineNetVer: 2, GameNetVer: 0 (Checksum: 439411406)
+[2018.05.04-04.51.28:623][  0]LogCarla: Loading CARLA settings from "../../../CarlaUE4/Config/CarlaSettings.ini"
+[2018.05.04-04.51.28:623][  0]LogCarla: == CARLA Settings ==============================================================
+[2018.05.04-04.51.28:623][  0]LogCarla: Last settings file loaded: ../../../CarlaUE4/Config/CarlaSettings.ini
+[2018.05.04-04.51.28:623][  0]LogCarla: [CARLA/Server]
+[2018.05.04-04.51.28:623][  0]LogCarla: Networking = Enabled
+[2018.05.04-04.51.28:623][  0]LogCarla: World Port = 42331
+[2018.05.04-04.51.28:623][  0]LogCarla: Server Time-out = 10000 ms
+[2018.05.04-04.51.28:623][  0]LogCarla: Synchronous Mode = Enabled
+[2018.05.04-04.51.28:623][  0]LogCarla: Send Non-Player Agents Info = Disabled
+[2018.05.04-04.51.28:623][  0]LogCarla: [CARLA/LevelSettings]
+[2018.05.04-04.51.28:623][  0]LogCarla: Player Vehicle        = Default
+[2018.05.04-04.51.28:623][  0]LogCarla: Number Of Vehicles    = 15
+[2018.05.04-04.51.28:623][  0]LogCarla: Number Of Pedestrians = 30
+[2018.05.04-04.51.28:623][  0]LogCarla: Weather Id = 1
+[2018.05.04-04.51.28:623][  0]LogCarla: Seed Vehicle Spawner = 123456789
+[2018.05.04-04.51.28:623][  0]LogCarla: Seed Pedestrian Spawner = 123456789
+[2018.05.04-04.51.28:623][  0]LogCarla: Found 0 available weather settings.
+[2018.05.04-04.51.28:623][  0]LogCarla: [CARLA/QualitySettings]
+[2018.05.04-04.51.28:624][  0]LogCarla: Quality Settings = Epic
+[2018.05.04-04.51.28:624][  0]LogCarla: [CARLA/Sensor]
+[2018.05.04-04.51.28:624][  0]LogCarla: Added 0 sensors.
+[2018.05.04-04.51.28:624][  0]LogCarla: Semantic Segmentation = Disabled
+[2018.05.04-04.51.28:624][  0]LogCarla: ================================================================================
+[2018.05.04-04.51.28:639][  0]LogMoviePlayer: Initializing movie player
+[2018.05.04-04.51.28:698][  0]LogUObjectArray: 31542 objects as part of root set at end of initial load.
+[2018.05.04-04.51.28:698][  0]LogUObjectAllocator: 5907632 out of 0 bytes used by permanent object pool.
+[2018.05.04-04.51.28:698][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2018.05.04-04.51.28:699][  0]LogEngine: Initializing Engine...
+[2018.05.04-04.51.28:787][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: Construct from data asset -  0.000 s
+[2018.05.04-04.51.28:787][  0]LogStats: UGameplayTagsManager::ConstructGameplayTagTree: GameplayTagTreeChangedEvent.Broadcast -  0.000 s
+[2018.05.04-04.51.28:787][  0]LogInit: Texture streaming: Enabled
+[2018.05.04-04.51.28:853][  0]LogCarla: Loading CARLA settings from "../../../CarlaUE4/Config/CarlaSettings.ini"
+[2018.05.04-04.51.28:854][  0]LogCarla: == CARLA Settings ==============================================================
+[2018.05.04-04.51.28:854][  0]LogCarla: Last settings file loaded: ../../../CarlaUE4/Config/CarlaSettings.ini
+[2018.05.04-04.51.28:854][  0]LogCarla: [CARLA/Server]
+[2018.05.04-04.51.28:854][  0]LogCarla: Networking = Enabled
+[2018.05.04-04.51.28:854][  0]LogCarla: World Port = 42331
+[2018.05.04-04.51.28:854][  0]LogCarla: Server Time-out = 10000 ms
+[2018.05.04-04.51.28:854][  0]LogCarla: Synchronous Mode = Enabled
+[2018.05.04-04.51.28:854][  0]LogCarla: Send Non-Player Agents Info = Disabled
+[2018.05.04-04.51.28:854][  0]LogCarla: [CARLA/LevelSettings]
+[2018.05.04-04.51.28:854][  0]LogCarla: Player Vehicle        = Default
+[2018.05.04-04.51.28:854][  0]LogCarla: Number Of Vehicles    = 15
+[2018.05.04-04.51.28:854][  0]LogCarla: Number Of Pedestrians = 30
+[2018.05.04-04.51.28:854][  0]LogCarla: Weather Id = 1
+[2018.05.04-04.51.28:854][  0]LogCarla: Seed Vehicle Spawner = 123456789
+[2018.05.04-04.51.28:854][  0]LogCarla: Seed Pedestrian Spawner = 123456789
+[2018.05.04-04.51.28:854][  0]LogCarla: Found 0 available weather settings.
+[2018.05.04-04.51.28:854][  0]LogCarla: [CARLA/QualitySettings]
+[2018.05.04-04.51.28:854][  0]LogCarla: Quality Settings = Epic
+[2018.05.04-04.51.28:854][  0]LogCarla: [CARLA/Sensor]
+[2018.05.04-04.51.28:854][  0]LogCarla: Added 0 sensors.
+[2018.05.04-04.51.28:854][  0]LogCarla: Semantic Segmentation = Disabled
+[2018.05.04-04.51.28:854][  0]LogCarla: ================================================================================
+[2018.05.04-04.51.28:855][  0]LogInit: Display: Game Engine Initialized.
+[2018.05.04-04.51.28:855][  0]LogGameplayTags: Display: UGameplayTagsManager::DoneAddingNativeTags. DelegateIsBound: 0
+[2018.05.04-04.51.28:871][  0]LogInit: Display: Starting Game.
+[2018.05.04-04.51.28:871][  0]LogNet: Browse: /Game/Maps/Town02?Name=Player
+[2018.05.04-04.51.28:877][  0]LogLoad: LoadMap: /Game/Maps/Town02?Name=Player
+[2018.05.04-04.51.30:733][  0]LogAIModule: Creating AISystem for world Town02
+[2018.05.04-04.51.31:018][  0]LogLoad: Game class is 'CarlaGameMode_C'
+[2018.05.04-04.51.31:155][  0]LogWorld: Bringing World /Game/Maps/Town02.Town02 up for play (max tick rate 0) at 2018.05.04-10.21.31
+[2018.05.04-04.51.31:156][  0]LogCarla: Loading weather description from ../../../CarlaUE4/Config/CarlaWeather.ini
+[33m[2018.05.04-04.51.31:157][  0]LogCarla: Warning: "../../../CarlaUE4/Config/CarlaWeather.Town02.ini" not found
+[0m[2018.05.04-04.51.31:158][  0]LogCarlaServer: Waiting for the client to connect...
+[2018.05.04-04.51.31:961][  0]LogCarlaServer: Received new episode
+[2018.05.04-04.51.31:961][  0]LogCarla: Loading CARLA settings from string
+[2018.05.04-04.51.31:962][  0]LogCarla: == CARLA Settings ==============================================================
+[2018.05.04-04.51.31:962][  0]LogCarla: Last settings file loaded: <string-provided-by-client>
+[2018.05.04-04.51.31:962][  0]LogCarla: [CARLA/Server]
+[2018.05.04-04.51.31:962][  0]LogCarla: Networking = Enabled
+[2018.05.04-04.51.31:962][  0]LogCarla: World Port = 42331
+[2018.05.04-04.51.31:962][  0]LogCarla: Server Time-out = 10000 ms
+[2018.05.04-04.51.31:962][  0]LogCarla: Synchronous Mode = Enabled
+[2018.05.04-04.51.31:962][  0]LogCarla: Send Non-Player Agents Info = Disabled
+[2018.05.04-04.51.31:962][  0]LogCarla: [CARLA/LevelSettings]
+[2018.05.04-04.51.31:962][  0]LogCarla: Player Vehicle        = Default
+[2018.05.04-04.51.31:962][  0]LogCarla: Number Of Vehicles    = 15
+[2018.05.04-04.51.31:962][  0]LogCarla: Number Of Pedestrians = 30
+[2018.05.04-04.51.31:962][  0]LogCarla: Weather Id = 1
+[2018.05.04-04.51.31:962][  0]LogCarla: Seed Vehicle Spawner = 123456789
+[2018.05.04-04.51.31:962][  0]LogCarla: Seed Pedestrian Spawner = 123456789
+[2018.05.04-04.51.31:962][  0]LogCarla: Found 15 available weather settings.
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 0 - Default
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 1 - ClearNoon
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 2 - CloudyNoon
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 3 - WetNoon
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 4 - WetCloudyNoon
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 5 - MidRainyNoon
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 6 - HardRainNoon
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 7 - SoftRainNoon
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 8 - ClearSunset
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 9 - CloudySunset
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 10 - WetSunset
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 11 - WetCloudySunset
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 12 - MidRainSunset
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 13 - HardRainSunset
+[2018.05.04-04.51.31:962][  0]LogCarla:   * 14 - SoftRainSunset
+[2018.05.04-04.51.31:962][  0]LogCarla: [CARLA/QualitySettings]
+[2018.05.04-04.51.31:962][  0]LogCarla: Quality Settings = Epic
+[2018.05.04-04.51.31:962][  0]LogCarla: [CARLA/Sensor]
+[2018.05.04-04.51.31:962][  0]LogCarla: Added 1 sensors.
+[2018.05.04-04.51.31:962][  0]LogCarla: Semantic Segmentation = Disabled
+[2018.05.04-04.51.31:962][  0]LogCarla: [CARLA/Sensor/CameraRGB]
+[2018.05.04-04.51.31:962][  0]LogCarla: Id = 904202369
+[2018.05.04-04.51.31:962][  0]LogCarla: Type = CAMERA
+[2018.05.04-04.51.31:962][  0]LogCarla: Position = (X=20000.000 Y=0.000 Z=14000.000)
+[2018.05.04-04.51.31:962][  0]LogCarla: Rotation = (P=0.000000 Y=0.000000 R=0.000000)
+[2018.05.04-04.51.31:962][  0]LogCarla: Image Size = 256x256
+[2018.05.04-04.51.31:962][  0]LogCarla: Post-Processing = SceneFinal
+[2018.05.04-04.51.31:962][  0]LogCarla: FOV = 90.000000
+[2018.05.04-04.51.31:962][  0]LogCarla: ================================================================================
+[2018.05.04-04.51.31:975][  0]LogWorld: Bringing up level for play took: 0.955112
+[2018.05.04-04.51.31:976][  0]LogCarlaServer: Sending 83 available start positions
+[2018.05.04-04.51.31:976][  0]LogCarlaServer: Sending 1 sensor descriptions
+[2018.05.04-04.51.31:977][  0]LogCarlaServer: Episode start received: { StartIndex = 0 }
+[2018.05.04-04.51.31:979][  0]LogCarla: Created Capture Camera 904202369 with postprocess "SceneFinal"
+[2018.05.04-04.51.31:979][  0]LogCarla: Changing weather settings to "ClearNoon"
+[2018.05.04-04.51.31:979][  0]LogCarlaServer: Ready to play, notifying client
+[2018.05.04-04.51.31:981][  0]LogCarla: Found 83 positions for spawning vehicles
+[2018.05.04-04.51.32:316][  0]LogCarla: Found 110 positions for spawning walkers at begin play.
+[2018.05.04-04.51.32:316][  0]LogCarla: Found 42 positions for spawning walkers during game play.
+[2018.05.04-04.51.32:358][  0]LogCarla: Spawned 25 walkers at begin play.
+[2018.05.04-04.51.32:358][  0]LogLoad: Took 3.481162 seconds to LoadMap(/Game/Maps/Town02)
+[2018.05.04-04.51.32:423][  0]LogLoad: (Engine Initialization) Total time: 5.06 seconds
+[2018.05.04-04.51.32:423][  0]LogExternalProfiler: No external profilers were discovered.  External profiling features will not be available.
+[2018.05.04-04.51.32:518][  0]LogRenderer: Reallocating scene render targets to support 256x256 Format 10 NumSamples 1 (Frame:1).
+[2018.05.04-04.51.33:348][  0]LogContentStreaming: Texture pool size now 2000 MB
+[2018.05.04-04.51.33:551][  1]LogLinux: Setting swap interval to 'Immediate'
+ERROR: tcpserver 42333 : error reading message: End of file 
+[2018.05.04-04.51.48:160][188]LogCarlaServer: Received new episode
+[2018.05.04-04.51.48:160][188]LogCarla: Loading CARLA settings from string
+[2018.05.04-04.51.48:160][188]LogCarlaServer: Restarting the level...
+[2018.05.04-04.51.48:172][189]LogNet: Browse: /Game/Maps/Town02?Name=Player?restart
+[2018.05.04-04.51.48:263][189]LogLoad: LoadMap: /Game/Maps/Town02?Name=Player
+[2018.05.04-04.51.48:264][189]r.AmbientOcclusionLevels = "-1"
+[2018.05.04-04.51.48:272][189]r.RHICmdBypass = "1"
+[2018.05.04-04.51.48:272][189]r.DefaultFeature.AntiAliasing = "2"
+[2018.05.04-04.51.48:272][189]r.Streaming.PoolSize = "2000"
+[2018.05.04-04.51.48:273][189]r.MinScreenRadiusForLights = "0.03"
+[2018.05.04-04.51.48:273][189]r.SeparateTranslucency = "1"
+[2018.05.04-04.51.48:273][189]r.PostProcessAAQuality = "4"
+[2018.05.04-04.51.48:273][189]r.BloomQuality = "5"
+[2018.05.04-04.51.48:273][189]r.SSR.Quality = "3"
+[2018.05.04-04.51.48:273][189]r.DepthOfFieldQuality = "2"
+[2018.05.04-04.51.48:273][189]r.SceneColorFormat = "4"
+[2018.05.04-04.51.48:273][189]r.TranslucencyVolumeBlur = "1"
+[2018.05.04-04.51.48:274][189]r.TranslucencyLightingVolumeDim = "64"
+[2018.05.04-04.51.48:274][189]r.MaxAnisotropy = "8"
+[2018.05.04-04.51.48:274][189]r.LensFlareQuality = "2"
+[2018.05.04-04.51.48:274][189]r.SceneColorFringeQuality = "1"
+[2018.05.04-04.51.48:274][189]r.FastBlurThreshold = "100"
+[2018.05.04-04.51.48:274][189]r.SSR.MaxRoughness = "-1"
+[2018.05.04-04.51.48:298][189]r.EarlyZPass = "3"
+[2018.05.04-04.51.48:400][189]r.EarlyZPassMovable = "1"
+[2018.05.04-04.51.48:478][189]foliage.DitheredLOD = "1"
+[2018.05.04-04.51.48:478][189]sg.PostProcessQuality = "3"
+[2018.05.04-04.51.48:478][189]r.ViewDistanceScale = "1"
+[2018.05.04-04.51.48:478][189]sg.ShadowQuality = "3"
+[2018.05.04-04.51.48:478][189]sg.TextureQuality = "3"
+[2018.05.04-04.51.48:479][189]sg.EffectsQuality = "3"
+[2018.05.04-04.51.48:479][189]sg.FoliageQuality = "3"
+[2018.05.04-04.51.48:479][189]foliage.DensityScale = "1"
+[2018.05.04-04.51.48:479][189]grass.densityScale = "1"
+[2018.05.04-04.51.48:479][189]r.TranslucentLightingVolume = "1"
+[2018.05.04-04.51.48:479][189]r.LightShaftDownSampleFactor = "2"
+[2018.05.04-04.51.48:479][189]r.DetailMode = "2"
+[2018.05.04-04.51.50:488][189]LogAIModule: Creating AISystem for world Town02
+[2018.05.04-04.51.50:780][189]LogLoad: Game class is 'CarlaGameMode_C'
+[2018.05.04-04.51.50:922][189]LogWorld: Bringing World /Game/Maps/Town02.Town02 up for play (max tick rate 0) at 2018.05.04-10.21.50
+[2018.05.04-04.51.50:923][189]LogCarla: Loading weather description from ../../../CarlaUE4/Config/CarlaWeather.ini
+[33m[2018.05.04-04.51.50:924][189]LogCarla: Warning: "../../../CarlaUE4/Config/CarlaWeather.Town02.ini" not found
+[0m[2018.05.04-04.51.50:924][189]LogCarla: == CARLA Settings ==============================================================
+[2018.05.04-04.51.50:924][189]LogCarla: Last settings file loaded: <string-provided-by-client>
+[2018.05.04-04.51.50:924][189]LogCarla: [CARLA/Server]
+[2018.05.04-04.51.50:924][189]LogCarla: Networking = Enabled
+[2018.05.04-04.51.50:925][189]LogCarla: World Port = 42331
+[2018.05.04-04.51.50:925][189]LogCarla: Server Time-out = 10000 ms
+[2018.05.04-04.51.50:925][189]LogCarla: Synchronous Mode = Enabled
+[2018.05.04-04.51.50:925][189]LogCarla: Send Non-Player Agents Info = Disabled
+[2018.05.04-04.51.50:925][189]LogCarla: [CARLA/LevelSettings]
+[2018.05.04-04.51.50:925][189]LogCarla: Player Vehicle        = Default
+[2018.05.04-04.51.50:925][189]LogCarla: Number Of Vehicles    = 15
+[2018.05.04-04.51.50:925][189]LogCarla: Number Of Pedestrians = 30
+[2018.05.04-04.51.50:925][189]LogCarla: Weather Id = 1
+[2018.05.04-04.51.50:925][189]LogCarla: Seed Vehicle Spawner = 123456789
+[2018.05.04-04.51.50:925][189]LogCarla: Seed Pedestrian Spawner = 123456789
+[2018.05.04-04.51.50:925][189]LogCarla: Found 15 available weather settings.
+[2018.05.04-04.51.50:925][189]LogCarla:   * 0 - Default
+[2018.05.04-04.51.50:925][189]LogCarla:   * 1 - ClearNoon
+[2018.05.04-04.51.50:925][189]LogCarla:   * 2 - CloudyNoon
+[2018.05.04-04.51.50:925][189]LogCarla:   * 3 - WetNoon
+[2018.05.04-04.51.50:925][189]LogCarla:   * 4 - WetCloudyNoon
+[2018.05.04-04.51.50:925][189]LogCarla:   * 5 - MidRainyNoon
+[2018.05.04-04.51.50:925][189]LogCarla:   * 6 - HardRainNoon
+[2018.05.04-04.51.50:925][189]LogCarla:   * 7 - SoftRainNoon
+[2018.05.04-04.51.50:925][189]LogCarla:   * 8 - ClearSunset
+[2018.05.04-04.51.50:925][189]LogCarla:   * 9 - CloudySunset
+[2018.05.04-04.51.50:925][189]LogCarla:   * 10 - WetSunset
+[2018.05.04-04.51.50:925][189]LogCarla:   * 11 - WetCloudySunset
+[2018.05.04-04.51.50:925][189]LogCarla:   * 12 - MidRainSunset
+[2018.05.04-04.51.50:925][189]LogCarla:   * 13 - HardRainSunset
+[2018.05.04-04.51.50:925][189]LogCarla:   * 14 - SoftRainSunset
+[2018.05.04-04.51.50:925][189]LogCarla: [CARLA/QualitySettings]
+[2018.05.04-04.51.50:925][189]LogCarla: Quality Settings = Epic
+[2018.05.04-04.51.50:925][189]LogCarla: [CARLA/Sensor]
+[2018.05.04-04.51.50:925][189]LogCarla: Added 1 sensors.
+[2018.05.04-04.51.50:925][189]LogCarla: Semantic Segmentation = Disabled
+[2018.05.04-04.51.50:925][189]LogCarla: [CARLA/Sensor/CameraRGB]
+[2018.05.04-04.51.50:925][189]LogCarla: Id = -1900459150
+[2018.05.04-04.51.50:925][189]LogCarla: Type = CAMERA
+[2018.05.04-04.51.50:925][189]LogCarla: Position = (X=20000.000 Y=0.000 Z=14000.000)
+[2018.05.04-04.51.50:925][189]LogCarla: Rotation = (P=0.000000 Y=0.000000 R=0.000000)
+[2018.05.04-04.51.50:925][189]LogCarla: Image Size = 256x256
+[2018.05.04-04.51.50:925][189]LogCarla: Post-Processing = SceneFinal
+[2018.05.04-04.51.50:925][189]LogCarla: FOV = 90.000000
+[2018.05.04-04.51.50:925][189]LogCarla: ================================================================================
+[2018.05.04-04.51.50:934][189]LogWorld: Bringing up level for play took: 0.152266
+[2018.05.04-04.51.50:935][189]LogCarlaServer: Sending 83 available start positions
+[2018.05.04-04.51.50:935][189]LogCarlaServer: Sending 1 sensor descriptions
+[2018.05.04-04.51.50:935][189]LogCarlaServer: Episode start received: { StartIndex = 1 }
+[2018.05.04-04.51.50:936][189]LogCarla: Created Capture Camera -1900459150 with postprocess "SceneFinal"
+[2018.05.04-04.51.50:936][189]LogCarla: Changing weather settings to "ClearNoon"
+[2018.05.04-04.51.50:937][189]LogCarlaServer: Ready to play, notifying client
+[2018.05.04-04.51.50:938][189]LogCarla: Found 83 positions for spawning vehicles
+[2018.05.04-04.51.51:265][189]LogCarla: Found 110 positions for spawning walkers at begin play.
+[2018.05.04-04.51.51:265][189]LogCarla: Found 42 positions for spawning walkers during game play.
+[2018.05.04-04.51.51:311][189]LogCarla: Spawned 27 walkers at begin play.
+[2018.05.04-04.51.51:315][189]LogLoad: Took 3.051667 seconds to LoadMap(/Game/Maps/Town02)
+ERROR: tcpserver 42333 : error reading message: End of file 
+[2018.05.04-04.52.08:543][332]LogCarlaServer: Received new episode
+[2018.05.04-04.52.08:543][332]LogCarla: Loading CARLA settings from string
+[2018.05.04-04.52.08:543][332]LogCarlaServer: Restarting the level...
+[2018.05.04-04.52.08:592][333]LogNet: Browse: /Game/Maps/Town02?Name=Player?restart
+[2018.05.04-04.52.08:719][333]LogLoad: LoadMap: /Game/Maps/Town02?Name=Player
+[2018.05.04-04.52.08:720][333]r.AmbientOcclusionLevels = "-1"
+[2018.05.04-04.52.08:770][333]r.RHICmdBypass = "1"
+[2018.05.04-04.52.08:770][333]r.DefaultFeature.AntiAliasing = "2"
+[2018.05.04-04.52.08:770][333]r.Streaming.PoolSize = "2000"
+[2018.05.04-04.52.08:770][333]r.MinScreenRadiusForLights = "0.03"
+[2018.05.04-04.52.08:771][333]r.SeparateTranslucency = "1"
+[2018.05.04-04.52.08:771][333]r.PostProcessAAQuality = "4"
+[2018.05.04-04.52.08:771][333]r.BloomQuality = "5"
+[2018.05.04-04.52.08:771][333]r.SSR.Quality = "3"
+[2018.05.04-04.52.08:771][333]r.DepthOfFieldQuality = "2"
+[2018.05.04-04.52.08:771][333]r.SceneColorFormat = "4"
+[2018.05.04-04.52.08:771][333]r.TranslucencyVolumeBlur = "1"
+[2018.05.04-04.52.08:771][333]r.TranslucencyLightingVolumeDim = "64"
+[2018.05.04-04.52.08:771][333]r.MaxAnisotropy = "8"
+[2018.05.04-04.52.08:771][333]r.LensFlareQuality = "2"
+[2018.05.04-04.52.08:771][333]r.SceneColorFringeQuality = "1"
+[2018.05.04-04.52.08:771][333]r.FastBlurThreshold = "100"
+[2018.05.04-04.52.08:772][333]r.SSR.MaxRoughness = "-1"
+[2018.05.04-04.52.08:796][333]r.EarlyZPass = "3"
+[2018.05.04-04.52.08:895][333]r.EarlyZPassMovable = "1"
+[2018.05.04-04.52.08:966][333]foliage.DitheredLOD = "1"
+[2018.05.04-04.52.08:966][333]sg.PostProcessQuality = "3"
+[2018.05.04-04.52.08:966][333]r.ViewDistanceScale = "1"
+[2018.05.04-04.52.08:966][333]sg.ShadowQuality = "3"
+[2018.05.04-04.52.08:967][333]sg.TextureQuality = "3"
+[2018.05.04-04.52.08:967][333]sg.EffectsQuality = "3"
+[2018.05.04-04.52.08:967][333]sg.FoliageQuality = "3"
+[2018.05.04-04.52.08:967][333]foliage.DensityScale = "1"
+[2018.05.04-04.52.08:967][333]grass.densityScale = "1"
+[2018.05.04-04.52.08:967][333]r.TranslucentLightingVolume = "1"
+[2018.05.04-04.52.08:967][333]r.LightShaftDownSampleFactor = "2"
+[2018.05.04-04.52.08:968][333]r.DetailMode = "2"
+[2018.05.04-04.52.10:986][333]LogAIModule: Creating AISystem for world Town02
+[2018.05.04-04.52.11:274][333]LogLoad: Game class is 'CarlaGameMode_C'
+[2018.05.04-04.52.11:418][333]LogWorld: Bringing World /Game/Maps/Town02.Town02 up for play (max tick rate 0) at 2018.05.04-10.22.11
+[2018.05.04-04.52.11:419][333]LogCarla: Loading weather description from ../../../CarlaUE4/Config/CarlaWeather.ini
+[33m[2018.05.04-04.52.11:420][333]LogCarla: Warning: "../../../CarlaUE4/Config/CarlaWeather.Town02.ini" not found
+[0m[2018.05.04-04.52.11:421][333]LogCarla: == CARLA Settings ==============================================================
+[2018.05.04-04.52.11:421][333]LogCarla: Last settings file loaded: <string-provided-by-client>
+[2018.05.04-04.52.11:421][333]LogCarla: [CARLA/Server]
+[2018.05.04-04.52.11:421][333]LogCarla: Networking = Enabled
+[2018.05.04-04.52.11:421][333]LogCarla: World Port = 42331
+[2018.05.04-04.52.11:421][333]LogCarla: Server Time-out = 10000 ms
+[2018.05.04-04.52.11:421][333]LogCarla: Synchronous Mode = Enabled
+[2018.05.04-04.52.11:421][333]LogCarla: Send Non-Player Agents Info = Disabled
+[2018.05.04-04.52.11:421][333]LogCarla: [CARLA/LevelSettings]
+[2018.05.04-04.52.11:421][333]LogCarla: Player Vehicle        = Default
+[2018.05.04-04.52.11:421][333]LogCarla: Number Of Vehicles    = 15
+[2018.05.04-04.52.11:421][333]LogCarla: Number Of Pedestrians = 30
+[2018.05.04-04.52.11:421][333]LogCarla: Weather Id = 1
+[2018.05.04-04.52.11:421][333]LogCarla: Seed Vehicle Spawner = 123456789
+[2018.05.04-04.52.11:421][333]LogCarla: Seed Pedestrian Spawner = 123456789
+[2018.05.04-04.52.11:421][333]LogCarla: Found 15 available weather settings.
+[2018.05.04-04.52.11:421][333]LogCarla:   * 0 - Default
+[2018.05.04-04.52.11:421][333]LogCarla:   * 1 - ClearNoon
+[2018.05.04-04.52.11:421][333]LogCarla:   * 2 - CloudyNoon
+[2018.05.04-04.52.11:421][333]LogCarla:   * 3 - WetNoon
+[2018.05.04-04.52.11:421][333]LogCarla:   * 4 - WetCloudyNoon
+[2018.05.04-04.52.11:421][333]LogCarla:   * 5 - MidRainyNoon
+[2018.05.04-04.52.11:421][333]LogCarla:   * 6 - HardRainNoon
+[2018.05.04-04.52.11:421][333]LogCarla:   * 7 - SoftRainNoon
+[2018.05.04-04.52.11:421][333]LogCarla:   * 8 - ClearSunset
+[2018.05.04-04.52.11:421][333]LogCarla:   * 9 - CloudySunset
+[2018.05.04-04.52.11:421][333]LogCarla:   * 10 - WetSunset
+[2018.05.04-04.52.11:421][333]LogCarla:   * 11 - WetCloudySunset
+[2018.05.04-04.52.11:421][333]LogCarla:   * 12 - MidRainSunset
+[2018.05.04-04.52.11:421][333]LogCarla:   * 13 - HardRainSunset
+[2018.05.04-04.52.11:421][333]LogCarla:   * 14 - SoftRainSunset
+[2018.05.04-04.52.11:421][333]LogCarla: [CARLA/QualitySettings]
+[2018.05.04-04.52.11:421][333]LogCarla: Quality Settings = Epic
+[2018.05.04-04.52.11:421][333]LogCarla: [CARLA/Sensor]
+[2018.05.04-04.52.11:421][333]LogCarla: Added 1 sensors.
+[2018.05.04-04.52.11:421][333]LogCarla: Semantic Segmentation = Disabled
+[2018.05.04-04.52.11:421][333]LogCarla: [CARLA/Sensor/CameraRGB]
+[2018.05.04-04.52.11:421][333]LogCarla: Id = 1181509794
+[2018.05.04-04.52.11:421][333]LogCarla: Type = CAMERA
+[2018.05.04-04.52.11:421][333]LogCarla: Position = (X=20000.000 Y=0.000 Z=14000.000)
+[2018.05.04-04.52.11:421][333]LogCarla: Rotation = (P=0.000000 Y=0.000000 R=0.000000)
+[2018.05.04-04.52.11:421][333]LogCarla: Image Size = 256x256
+[2018.05.04-04.52.11:421][333]LogCarla: Post-Processing = SceneFinal
+[2018.05.04-04.52.11:421][333]LogCarla: FOV = 90.000000
+[2018.05.04-04.52.11:421][333]LogCarla: ================================================================================
+[2018.05.04-04.52.11:430][333]LogWorld: Bringing up level for play took: 0.154384
+[2018.05.04-04.52.11:431][333]LogCarlaServer: Sending 83 available start positions
+[2018.05.04-04.52.11:431][333]LogCarlaServer: Sending 1 sensor descriptions
+[2018.05.04-04.52.11:431][333]LogCarlaServer: Episode start received: { StartIndex = 2 }
+[2018.05.04-04.52.11:432][333]LogCarla: Created Capture Camera 1181509794 with postprocess "SceneFinal"
+[2018.05.04-04.52.11:432][333]LogCarla: Changing weather settings to "ClearNoon"
+[2018.05.04-04.52.11:433][333]LogCarlaServer: Ready to play, notifying client
+[2018.05.04-04.52.11:435][333]LogCarla: Found 83 positions for spawning vehicles
+[2018.05.04-04.52.11:762][333]LogCarla: Found 110 positions for spawning walkers at begin play.
+[2018.05.04-04.52.11:762][333]LogCarla: Found 42 positions for spawning walkers during game play.
+[2018.05.04-04.52.11:808][333]LogCarla: Spawned 27 walkers at begin play.
+[2018.05.04-04.52.11:812][333]LogLoad: Took 3.092221 seconds to LoadMap(/Game/Maps/Town02)
+ERROR: tcpserver 42333 : error reading message: End of file 
+[2018.05.04-04.52.18:577][421]LogCarlaServer: Received new episode
+[2018.05.04-04.52.18:577][421]LogCarla: Loading CARLA settings from string
+[2018.05.04-04.52.18:577][421]LogCarlaServer: Restarting the level...
+[2018.05.04-04.52.18:598][422]LogNet: Browse: /Game/Maps/Town02?Name=Player?restart
+[2018.05.04-04.52.18:659][422]LogLoad: LoadMap: /Game/Maps/Town02?Name=Player
+[2018.05.04-04.52.18:660][422]r.AmbientOcclusionLevels = "-1"
+[2018.05.04-04.52.18:680][422]r.RHICmdBypass = "1"
+[2018.05.04-04.52.18:681][422]r.DefaultFeature.AntiAliasing = "2"
+[2018.05.04-04.52.18:681][422]r.Streaming.PoolSize = "2000"
+[2018.05.04-04.52.18:681][422]r.MinScreenRadiusForLights = "0.03"
+[2018.05.04-04.52.18:681][422]r.SeparateTranslucency = "1"
+[2018.05.04-04.52.18:681][422]r.PostProcessAAQuality = "4"
+[2018.05.04-04.52.18:681][422]r.BloomQuality = "5"
+[2018.05.04-04.52.18:681][422]r.SSR.Quality = "3"
+[2018.05.04-04.52.18:681][422]r.DepthOfFieldQuality = "2"
+[2018.05.04-04.52.18:681][422]r.SceneColorFormat = "4"
+[2018.05.04-04.52.18:682][422]r.TranslucencyVolumeBlur = "1"
+[2018.05.04-04.52.18:682][422]r.TranslucencyLightingVolumeDim = "64"
+[2018.05.04-04.52.18:682][422]r.MaxAnisotropy = "8"
+[2018.05.04-04.52.18:682][422]r.LensFlareQuality = "2"
+[2018.05.04-04.52.18:682][422]r.SceneColorFringeQuality = "1"
+[2018.05.04-04.52.18:682][422]r.FastBlurThreshold = "100"
+[2018.05.04-04.52.18:682][422]r.SSR.MaxRoughness = "-1"
+[2018.05.04-04.52.18:708][422]r.EarlyZPass = "3"
+[2018.05.04-04.52.18:805][422]r.EarlyZPassMovable = "1"
+[2018.05.04-04.52.18:877][422]foliage.DitheredLOD = "1"
+[2018.05.04-04.52.18:877][422]sg.PostProcessQuality = "3"
+[2018.05.04-04.52.18:877][422]r.ViewDistanceScale = "1"
+[2018.05.04-04.52.18:877][422]sg.ShadowQuality = "3"
+[2018.05.04-04.52.18:877][422]sg.TextureQuality = "3"
+[2018.05.04-04.52.18:877][422]sg.EffectsQuality = "3"
+[2018.05.04-04.52.18:877][422]sg.FoliageQuality = "3"
+[2018.05.04-04.52.18:877][422]foliage.DensityScale = "1"
+[2018.05.04-04.52.18:877][422]grass.densityScale = "1"
+[2018.05.04-04.52.18:877][422]r.TranslucentLightingVolume = "1"
+[2018.05.04-04.52.18:877][422]r.LightShaftDownSampleFactor = "2"
+[2018.05.04-04.52.18:878][422]r.DetailMode = "2"
+[2018.05.04-04.52.20:891][422]LogAIModule: Creating AISystem for world Town02
+[2018.05.04-04.52.21:179][422]LogLoad: Game class is 'CarlaGameMode_C'
+[2018.05.04-04.52.21:324][422]LogWorld: Bringing World /Game/Maps/Town02.Town02 up for play (max tick rate 0) at 2018.05.04-10.22.21
+[2018.05.04-04.52.21:324][422]LogCarla: Loading weather description from ../../../CarlaUE4/Config/CarlaWeather.ini
+[33m[2018.05.04-04.52.21:325][422]LogCarla: Warning: "../../../CarlaUE4/Config/CarlaWeather.Town02.ini" not found
+[0m[2018.05.04-04.52.21:326][422]LogCarla: == CARLA Settings ==============================================================
+[2018.05.04-04.52.21:326][422]LogCarla: Last settings file loaded: <string-provided-by-client>
+[2018.05.04-04.52.21:326][422]LogCarla: [CARLA/Server]
+[2018.05.04-04.52.21:326][422]LogCarla: Networking = Enabled
+[2018.05.04-04.52.21:326][422]LogCarla: World Port = 42331
+[2018.05.04-04.52.21:326][422]LogCarla: Server Time-out = 10000 ms
+[2018.05.04-04.52.21:326][422]LogCarla: Synchronous Mode = Enabled
+[2018.05.04-04.52.21:326][422]LogCarla: Send Non-Player Agents Info = Disabled
+[2018.05.04-04.52.21:326][422]LogCarla: [CARLA/LevelSettings]
+[2018.05.04-04.52.21:326][422]LogCarla: Player Vehicle        = Default
+[2018.05.04-04.52.21:326][422]LogCarla: Number Of Vehicles    = 15
+[2018.05.04-04.52.21:326][422]LogCarla: Number Of Pedestrians = 30
+[2018.05.04-04.52.21:326][422]LogCarla: Weather Id = 1
+[2018.05.04-04.52.21:326][422]LogCarla: Seed Vehicle Spawner = 123456789
+[2018.05.04-04.52.21:326][422]LogCarla: Seed Pedestrian Spawner = 123456789
+[2018.05.04-04.52.21:326][422]LogCarla: Found 15 available weather settings.
+[2018.05.04-04.52.21:326][422]LogCarla:   * 0 - Default
+[2018.05.04-04.52.21:326][422]LogCarla:   * 1 - ClearNoon
+[2018.05.04-04.52.21:326][422]LogCarla:   * 2 - CloudyNoon
+[2018.05.04-04.52.21:326][422]LogCarla:   * 3 - We

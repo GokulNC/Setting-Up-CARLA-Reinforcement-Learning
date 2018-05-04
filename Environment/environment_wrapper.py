@@ -136,10 +136,7 @@ class EnvironmentWrapper(object):
 		"""
 		if self.renderer is None: return
 
-		if carla_config.is_segmented:
-			img = convert_segmented_to_rgb(carla_config.colors_segment, self.get_rendered_image())
-		else:
-			img = self.get_rendered_image()
+		img = self.get_rendered_image()
 		self.renderer.render_image(img)
 		if carla_config.save_screens:
 			if self.frame_no%carla_config.save_freq == 0: save_image(img, "screens/Game_"+str(time.time())+".png")
@@ -247,4 +244,4 @@ class EnvironmentWrapper(object):
 		This can be different from the state. For example, mujoco's state is a measurements vector.
 		:return: numpy array containing the image that will be rendered to the screen
 		"""
-		return self.observation['observation']
+		pass

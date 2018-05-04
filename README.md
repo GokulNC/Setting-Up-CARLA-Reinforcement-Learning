@@ -51,7 +51,7 @@ git clone https://github.com/GokulNC/Setting-Up-CARLA-RL
 ```
 
 All the required files for Environment's RL interface is present in the `Environment` directory (which you need not worry about)
-*Note*: Most of the files are obtained from Intel Coach's interface for RL, with some modifications from my side.
+*Note*: Most of the files are obtained from Intel Coach's interface for RL, with modifications from my side.
 
 ## Playing with the Environment
 
@@ -104,7 +104,7 @@ actions_description = ['NO-OP', 'TURN_LEFT', 'TURN_RIGHT', 'GAS', 'BRAKE',
 # observation   :   observation after taking the action
 
 # To get RGB image from the observation:
-state = observation['observation']
+state = observation['rgb_image']
 # TODO: In future, will add supoort for LiDAR sensors, etc. as required
 
 # reward       :   immediate reward after taking the action
@@ -141,8 +141,10 @@ Use the arrow keys to play (`Up` to accelerate, `Down` to brake, `Left/Right` to
 ## Extras:
 
 - You can change resolution of server window, render in `Environment/carla_config.py`
-- You can change server actual resolution in `Environment/CarlaSettings.ini`
-- You can get segmented output by setting `is_segmented = True` in `carla_config.py` and `PostProcessing=SemanticSegmentation` in `CarlaSettings.ini`   
+- You can get the following outputs, instead of just RGB image:
+- - For Segmentated output: `env = CarlaEnv(cameras=['SemanticSegmentation'])` and `segmented_output = observation['segmented_image']`
+- - For depth output: `env = CarlaEnv(cameras=['Depth'])` and `segmented_output = observation['depth_map']`
+- - (Note: You can also use a combination of everything. For RGB output, cameras=['SceneFinal'])
 (To play with your own cameras, feel free to modify things as described [here in docs](https://carla.readthedocs.io/en/latest/cameras_and_sensors/))
 
 
@@ -150,4 +152,5 @@ Use the arrow keys to play (`Up` to accelerate, `Down` to brake, `Left/Right` to
 
 - As of now, the CarlaEnvironmentWrapper supports both continous & hardcoded discretized values. I think discretized action values can be removed
 - Make it Gym compliant (for benchmarks)
-- Add cameras dynamically as required, instead of relying on static `CarlaSettings.ini`
+
+Feel free to contribute!
