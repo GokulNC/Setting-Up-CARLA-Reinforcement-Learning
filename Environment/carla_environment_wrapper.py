@@ -60,9 +60,9 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			ImageSizeX=carla_config.server_width,
 			ImageSizeY=carla_config.server_height,
 			FOV=90.0,
-			PositionX=200,
-			PositionY=0,
-			PositionZ=140,
+			PositionX=2.0, # 200 for Carla 0.7
+			PositionY=0.0,
+			PositionZ=1.40, # 140 for Carla 0.7
 			RotationPitch = 0.0,
 			RotationRoll = 0.0,
 			RotationYaw = 0.0,
@@ -395,7 +395,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 				return self.observation['colored_segmented_image']
 			else:
 				return convert_segmented_to_rgb(carla_config.colors_segment, self.observation['segmented_image'])
-		elif self.rgb_image:
+		elif self.rgb_camera:
 			return self.observation['rgb_image']
 		else:
 			print("Lol man, what do you wanna render??")

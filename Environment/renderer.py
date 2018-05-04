@@ -22,7 +22,7 @@ class Renderer(object):
         """
         self.size = (width, height)
         self.screen = self.display.set_mode(self.size, HWSURFACE | DOUBLEBUF)
-        self.display.set_caption("Coach")
+        self.display.set_caption("Renderer")
         self.is_open = True
 
     def normalize_image(self, image):

@@ -60,7 +60,7 @@ def start_listen():
 
 
 print("Creating Environment..")
-env = CarlaEnv(is_render_enabled=False, num_speedup_steps = 10)
+env = CarlaEnv(is_render_enabled=False, num_speedup_steps = 10, run_offscreen=False)
 
 print("Resetting the environment..")
 env.reset()
