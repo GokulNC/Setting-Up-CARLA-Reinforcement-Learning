@@ -11,6 +11,8 @@ from carla.settings import CarlaSettings
 from carla.tcp import TCPConnectionError
 from carla.sensor import Camera
 from carla.client import VehicleControl
+from carla.image_converter import depth_to_logarithmic_grayscale, depth_to_local_point_cloud, depth_to_array
+from Environment.renderer import Renderer
 
 import numpy as np
 from Environment.environment_wrapper import EnvironmentWrapper
@@ -35,8 +37,8 @@ key_map = {
 }
 
 class CarlaEnvironmentWrapper(EnvironmentWrapper):
-	def __init__(self, num_speedup_steps = 30, require_explicit_reset=True, is_render_enabled=False, early_termination_enabled=False, run_offscreen=False, cameras=['SceneFinal']):
-		EnvironmentWrapper.__init__(self, is_render_enabled)
+	def __init__(self, num_speedup_steps = 30, require_explicit_reset=True, is_render_enabled=False, early_termination_enabled=False, run_offscreen=False, cameras=['SceneFinal'], save_screens=False):
+		EnvironmentWrapper.__init__(self, is_render_enabled, save_screens)
 
 		self.episode_max_time = 1000000
 		self.allow_braking = True
@@ -55,7 +57,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		# client configuration
 		self.verbose = True
 		self.observation = None
-		self.autocolor_the_segments = True
+		
 		self.camera_settings = dict(
 			ImageSizeX=carla_config.server_width,
 			ImageSizeY=carla_config.server_height,
@@ -75,6 +77,9 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		self.segment_camera = 'SemanticSegmentation' in cameras
 		self.depth_camera = 'Depth' in cameras
 		self.class_grouping = carla_config.class_grouping or [(i, ) for i in range(carla_config.no_of_classes)]
+		self.autocolor_the_segments = False
+		self.color_the_depth_map = False
+		self.enable_coalesced_output = False
 		
 		self.max_depth_value = 1.0 #255.0 for CARLA 7.0
 		self.min_depth_value = 0.0
@@ -102,7 +107,8 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		if self.rgb_camera: self.settings.add_sensor(self.create_camera(self.rgb_camera_name, 'SceneFinal'))
 		if self.segment_camera: self.settings.add_sensor(self.create_camera(self.segment_camera_name, 'SemanticSegmentation'))
 		if self.depth_camera: self.settings.add_sensor(self.create_camera(self.depth_camera_name, 'Depth'))
-			
+		
+		
 		self.car_speed = 0
 		self.is_game_setup = False # Will be true only when setup_client_and_server() is called, either explicitly, or by reset()
 
@@ -112,7 +118,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		self.action_space_high = [1, 1]
 		self.action_space_low = [-1, -1]
 		self.action_space_abs_range = np.maximum(np.abs(self.action_space_low), np.abs(self.action_space_high))
-		self.steering_strength = 0.4
+		self.steering_strength = 0.35
 		self.gas_strength = 1.0
 		self.brake_strength = 0.6
 		self.actions = {0: [0., 0.],
@@ -135,12 +141,12 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		# measurements
 		self.measurements_size = (1,)
 		self.autopilot = None
-		self.kill_if_unmoved_for_n_steps = 18
-		self.unmoved_steps = 0
+		self.kill_if_unmoved_for_n_steps = 15
+		self.unmoved_steps = 0.0
 		
 		self.early_termination_enabled = early_termination_enabled
 		if self.early_termination_enabled:
-			self.max_neg_steps = 50
+			self.max_neg_steps = 70
 			self.cur_neg_steps = 0
 			self.early_termination_punishment = 20.0
 
@@ -149,9 +155,16 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 
 		# render
 		if self.automatic_render:
-			image = self.get_rendered_image()
-			self.renderer.create_screen(image.shape[1], image.shape[0])
-
+			self.init_renderer()
+		if self.save_screens:
+			create_dir(self.images_path)
+			self.rgb_img_path = self.images_path+"/rgb/"
+			create_dir(self.rgb_img_path)
+			self.segmented_img_path = self.images_path+"/segmented/"
+			create_dir(self.segmented_img_path)
+			self.depth_img_path = self.images_path+"/depth/"
+			create_dir(self.depth_img_path)
+			
 
 	def create_camera(self, camera_name, PostProcessing):
 		#camera = Camera('CameraRGB')
@@ -227,9 +240,9 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			time.sleep(10)
 			no_of_attempts += 1
 
-	def check_early_stop(self, player_measurements):
+	def check_early_stop(self, player_measurements, immediate_reward):
 		
-		if player_measurements.intersection_offroad>0.99 or (self.control.throttle == 0.0 and player_measurements.forward_speed < 0.1 and self.control.brake != 0.0):
+		if player_measurements.intersection_offroad>0.95 or immediate_reward < -1 or (self.control.throttle == 0.0 and player_measurements.forward_speed < 0.1 and self.control.brake != 0.0):
 			self.cur_neg_steps += 1
 			early_done = (self.cur_neg_steps > self.max_neg_steps)
 			if early_done:
@@ -266,12 +279,12 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		# Recognize that as a collision
 		self.car_speed = measurements.player_measurements.forward_speed
 		
-		if self.control.throttle > 0 and self.car_speed < 0.7 and self.control.brake==0.0 and self.is_game_ready_for_input:
-			self.unmoved_steps += 1
+		if self.control.throttle > 0 and self.car_speed < 0.75 and self.control.brake==0.0 and self.is_game_ready_for_input:
+			self.unmoved_steps += 1.0
 			if self.unmoved_steps > self.kill_if_unmoved_for_n_steps:
 				is_collision = True
 				print("Car stuck somewhere lol")
-		elif self.unmoved_steps>0: self.unmoved_steps -= 1
+		elif self.unmoved_steps>0: self.unmoved_steps -= 0.50 #decay slowly, since it may be stuck and not accelerate few times
 		
 		if is_collision: print("Collision occured")
 		
@@ -279,15 +292,15 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		if speed_reward > 30.:
 			speed_reward = 30.
 		self.reward = speed_reward*1.2 \
-					  - (measurements.player_measurements.intersection_otherlane * self.car_speed * 1.5) \
-					  - (measurements.player_measurements.intersection_offroad * self.car_speed * 1.8) \
-					  - is_collision * 200 \
+					  - (measurements.player_measurements.intersection_otherlane * (self.car_speed+1.5)*1.2) \
+					  - (measurements.player_measurements.intersection_offroad * (self.car_speed+2.5)*1.5) \
+					  - is_collision * 250 \
 					  - np.abs(self.control.steer) * 2
 		# Scale down the reward by a factor
 		self.reward /= 10
 		
 		if self.early_termination_enabled:
-			early_done, punishment = self.check_early_stop(measurements.player_measurements)
+			early_done, punishment = self.check_early_stop(measurements.player_measurements, self.reward)
 			if early_done:
 				self.done = True
 			self.reward -= punishment
@@ -295,7 +308,10 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		# update measurements
 		self.observation = {
 			#'observation': sensor_data['CameraRGB'].data,
-			'measurements': [measurements.player_measurements.forward_speed],
+			'acceleration': measurements.player_measurements.acceleration,
+			'forward_speed': measurements.player_measurements.forward_speed,
+			'intersection_otherlane': measurements.player_measurements.intersection_otherlane,
+			'intersection_offroad': measurements.player_measurements.intersection_offroad
 		}
 		
 		if self.rgb_camera:
@@ -305,11 +321,11 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		if self.depth_camera:
 			self.observation['depth_map'] = sensor_data[self.depth_camera_name].data
 		
-		if self.segment_camera and self.depth_camera:
+		if self.segment_camera and self.depth_camera and self.enable_coalesced_output:
 			self.observation['coalesced_data'] = coalesce_depth_and_segmentation(
 						self.observation['segmented_image'], self.class_grouping, self.observation['depth_map'], self.max_depth_value)
 		
-		if self.segment_camera and self.autocolor_the_segments:
+		if self.segment_camera and (self.autocolor_the_segments or self.is_render_enabled):
 			self.observation['colored_segmented_image'] = convert_segmented_to_rgb(carla_config.colors_segment, self.observation['segmented_image'])
 		self.autopilot = measurements.player_measurements.autopilot_control
 
@@ -318,7 +334,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 
 		if (measurements.game_timestamp >= self.episode_max_time) or is_collision:
 			# screen.success('EPISODE IS DONE. GameTime: {}, Collision: {}'.format(str(measurements.game_timestamp),
-			#                                                                      str(is_collision)))
+			#																	  str(is_collision)))
 			self.done = True
 
 	def _take_action(self, action_idx):
@@ -332,7 +348,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 
 		self.control = VehicleControl()
 		
-		if self.car_speed>35 and action[0]>0:
+		if self.car_speed>35.0 and action[0]>0:
 			action[0] -= 0.20*(self.car_speed/35.0)
 		self.control.throttle = np.clip(action[0], 0, 1)
 		self.control.steer = np.clip(action[1], -1, 1)
@@ -354,6 +370,14 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 				self.done = True
 		return
 
+		
+	def init_renderer(self):
+		self.num_cameras = 0
+		if self.rgb_camera: self.num_cameras += 1
+		if self.segment_camera: self.num_cameras += 1
+		if self.depth_camera: self.num_cameras += 1
+		self.renderer.create_screen(carla_config.render_width, carla_config.render_height*self.num_cameras)
+		
 	def _restart_environment_episode(self, force_environment_reset=True):
 
 		if not force_environment_reset and not self.done and self.is_game_setup:
@@ -362,7 +386,8 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		self.is_game_ready_for_input = False
 		if not self.is_game_setup:
 			self.setup_client_and_server()
-			if self.is_render_enabled: self.renderer.create_screen(carla_config.render_width, carla_config.render_height)
+			if self.is_render_enabled:
+				self.init_renderer()
 		else:
 			self.iterator_start_positions += 1
 			if self.iterator_start_positions >= self.num_pos:
@@ -374,7 +399,7 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 			self.game.connect()
 			self.game.start_episode(self.iterator_start_positions)
 
-		self.unmoved_steps = 0
+		self.unmoved_steps = 0.0
 		
 		if self.early_termination_enabled:
 			self.cur_neg_steps = 0
@@ -386,17 +411,28 @@ class CarlaEnvironmentWrapper(EnvironmentWrapper):
 		self.observation = observation
 		self.is_game_ready_for_input = True
 
-		return observation
-		
+		return observation		
+	
 	def get_rendered_image(self):
-		#TODO: Support rendering for multiple cameras
+		
+		temp = []
+		if self.rgb_camera: temp.append(self.observation['rgb_image'])
 		if self.segment_camera:
-			if self.autocolor_the_segments:
-				return self.observation['colored_segmented_image']
-			else:
-				return convert_segmented_to_rgb(carla_config.colors_segment, self.observation['segmented_image'])
-		elif self.rgb_camera:
-			return self.observation['rgb_image']
-		else:
-			print("Lol man, what do you wanna render??")
-			sys.exit(1)
+			temp.append(self.observation['colored_segmented_image'])
+		if self.depth_camera:
+			if self.color_the_depth_map: temp.append(depthmap_to_rgb(self.observation['depth_map']))
+			else: temp.append(depthmap_to_grey(self.observation['depth_map']))
+			return np.vstack((img for img in temp))
+	
+	def save_screenshots(self):
+		if not self.save_screens:
+			print("save_screens is set False")
+			return
+		filename = str(int(time.time()*100))
+		if self.rgb_camera:
+			save_image(self.rgb_img_path+filename+".png", self.observation['rgb_image'])
+		if self.segment_camera:
+			np.save(self.segmented_img_path+filename, self.observation['segmented_image'])
+		if self.depth_camera:
+			save_depthmap_as_16bit_png(self.depth_img_path+filename+".png",self.observation['depth_map'],self.max_depth_value,0.95) #Truncating sky as 0
+			#save_depthmap_as_16bit_png(self.images_path+"/depth_kitti/"+filename+".png", self.observation['depth_map'], self.max_depth_value, 0.09) #Truncate above 90m

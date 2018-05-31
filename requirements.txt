@@ -3,3 +3,4 @@ protobuf
 scipy
 pynput
 pygame
+pypng

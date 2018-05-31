@@ -1,12 +1,14 @@
 # Resolutions
 
-server_height = 256
-server_width = 256
-render_height = 256
-render_width = 256
+server_height = 360
+server_width = 360
+render_height = 360
+render_width = 360
 
-save_screens = False
-save_freq = 5 #Save once in x frames
+# 96 * 8/3 = 256
+# 3/8 = 0.375
+
+scale_factor = 0.375
 
 '''
 Segmentation Classes:
@@ -27,7 +29,7 @@ Segmentation Classes:
 Source: https://carla.readthedocs.io/en/latest/cameras_and_sensors/
 '''
 no_of_classes = 13
-class_grouping = [4, 5, 12, 6, 7, 8, 10, (1, 2, 9, 11), (0, 3)]
+class_grouping = [4, 5, 12, 6, 7, 8, 10, (0, 1, 2, 3, 9, 11)]
 
 colors_segment = [[0, 0, 0], #Black None
             [100, 100, 255], #X-colored Buildings

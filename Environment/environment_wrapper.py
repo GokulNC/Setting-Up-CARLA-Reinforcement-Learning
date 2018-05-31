@@ -6,7 +6,7 @@ import Environment.carla_config as carla_config
 import operator, time
 
 class EnvironmentWrapper(object):
-	def __init__(self, is_render_enabled=False):
+	def __init__(self, is_render_enabled=False, save_screens = False):
 		"""
 		:param tuning_parameters:
 		:type tuning_parameters: Preset
@@ -36,18 +36,17 @@ class EnvironmentWrapper(object):
 		self.record_video_every = 1000
 		#self.env_id = self.tp.env.level
 		self.video_path = 'temp/experiment-videos'
-		self.is_render_enabled = is_render_enabled
+		self.images_path = 'screens'
 		self.seed = None
 		self.frame_skip = 1
 		self.automatic_render = False # Otherwise it'll automatically render()
 		self.wait_for_explicit_human_action = False
 		self.game_is_open = True
-		if self.is_render_enabled or self.automatic_render: self.renderer = Renderer()
+		self.is_render_enabled = is_render_enabled or self.automatic_render
+		self.save_screens = save_screens
+		if self.is_render_enabled: self.renderer = Renderer()
 		else: self.renderer = None
 		self.observation = None
-
-		if carla_config.save_screens:
-			self.frame_no = 0
 
 	@property
 	def measurements(self):
@@ -124,7 +123,7 @@ class EnvironmentWrapper(object):
 
 		self._update_state()
 
-		if self.is_render_enabled:
+		if self.automatic_render:
 			self.render()
 
 		#self.state = self._preprocess_state(self.state)
@@ -134,16 +133,17 @@ class EnvironmentWrapper(object):
 		"""
 		Call the environment function for rendering to the screen
 		"""
-		if self.renderer is None: return
+		if self.renderer is None or not (self.is_render_enabled):
+			print("Unable to render: is_render_enabled is set False.")
+			return
 
 		img = self.get_rendered_image()
 		self.renderer.render_image(img)
-		if carla_config.save_screens:
-			if self.frame_no%carla_config.save_freq == 0: save_image(img, "screens/Game_"+str(time.time())+".png")
-			self.frame_no += 1
-
 		#print(str(img))
-
+	
+	def save_screenshots(self):
+		pass
+	
 	def reset(self, force_environment_reset=True):
 		"""
 		Reset the environment and all the variable of the wrapper

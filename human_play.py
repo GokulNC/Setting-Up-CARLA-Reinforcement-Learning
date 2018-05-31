@@ -1,8 +1,12 @@
+'''*******************************************************
+
+By Gokul NC <gokulnc@ymail.com> ( http://about.me/GokulNC )
+
+*******************************************************'''
+
+
 from Environment.carla_environment_wrapper import CarlaEnvironmentWrapper as CarlaEnv
 import numpy as np
-#import keyboard
-# import pygame
-# from pygame.locals import *
 from pynput import keyboard
 from threading import Thread
 import time
@@ -25,7 +29,7 @@ actions = {0: (0., 0.),
 
 action_map = {v: k for k, v in actions.items()} #https://stackoverflow.com/a/483833/5002496
 
-frame_skip = 1 #No. of frames to skip, i.e., the no. of frames in which to produce consecutive actions. Already CARLA is low FPS, so better be 1
+frame_skip = 5 #No. of frames to skip, i.e., the no. of frames in which to produce consecutive actions. Already CARLA is low FPS, so better be 1
 
 debug_logs = False
 
@@ -60,7 +64,7 @@ def start_listen():
 
 
 print("Creating Environment..")
-env = CarlaEnv(is_render_enabled=False, num_speedup_steps = 10, run_offscreen=False)
+env = CarlaEnv(is_render_enabled=False, num_speedup_steps = 10, run_offscreen=False, cameras = ['SceneFinal', 'Depth', 'SemanticSegmentation'], save_screens=False)
 
 print("Resetting the environment..")
 env.reset()
@@ -84,6 +88,7 @@ while True:
 	for _ in range(frame_skip):
 		observation, reward, done, _ = env.step(action_map[tuple(action)])
 		#env.render()
+		#env.save_screenshots()
 		r += reward
 		if done: break
 	

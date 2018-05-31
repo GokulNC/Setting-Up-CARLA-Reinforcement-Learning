@@ -5,7 +5,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+#	  http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -23,6 +23,7 @@ from subprocess import call, Popen
 import signal
 import copy
 import scipy.misc
+import png
 
 killed_processes = []
 
@@ -81,10 +82,10 @@ def convert_to_ascii(data):
 	else:
 		return data
 
-def save_image(npdata, outfilename):
+def save_image(outfilename, npimg):
 	#img = Image.fromarray( np.asarray( np.clip(npdata,0,255), dtype="uint8"), "L" )
 	#img.save( outfilename )
-	scipy.misc.toimage(npdata).save(outfilename)
+	scipy.misc.toimage(npimg).save(outfilename)
 
 def convert_segmented_to_rgb(label_colours, segmented_img):
 	no_of_classes = len(label_colours)
@@ -113,14 +114,14 @@ def convert_segmented_to_rgb(label_colours, segmented_img):
 
 	return rgb
 	
-def coalesce_depth_and_segmentation(segmented_img, classes_combo, depth_map, depth_scaler):
+def coalesce_depth_and_segmentation(segmented_img, classes_combo, depth_map, depth_scaler=1.0):
 	'''
-	Input:	Takes segmentated image and depth map
+	Input:	Takes segmented image and depth map
 	Output:	Creates an array having no. of channels = no. of classes, each channel for each class (or some classes can be joined into a single channel)
 			Each value in each channel output[channel][w][h] is of range (0-1], corresponding to the normalized depth of the specific class.
 			For all other classes, output[channel][w][h] = 0
 	Arguments:
-		segmented_img: Sematically segmented image
+		segmented_img: Semantically segmented image
 		depth_map: Depth of the image
 		classes_combo: List of tuples, each denoting which channel will have what classes' data (list length will be no. of channels)
 		depth_scaler: The value by which will be divided to bring down to the scale [0,1]
@@ -130,13 +131,82 @@ def coalesce_depth_and_segmentation(segmented_img, classes_combo, depth_map, dep
 	num_channels = len(classes_combo)
 	output = np.full((num_channels,) + depth_map.shape, False)
 	
-	class_combo = [(i,) if type(i) is int else i for i in class_combo]
+	classes_combo = [(i,) if type(i) is int else i for i in classes_combo]
 	
 	for i in range(num_channels):
 		output[i] = np.any([segmented_img==j for j in classes_combo[i]], axis=0)
-		output[i] = (np.multiply(output[i]*depth_map))/depth_scaler
+		output[i] = (np.multiply(output[i],depth_map))/depth_scaler
 	return output
+
+def depthmap_to_grey(depth_map, scale_factor=1.0):
+	## Distributing same value across three channels in RGB produces grayscale image
 	
+	normalized_depth = np.multiply(depth_map, scale_factor)
+	logdepth = numpy.ones(normalized_depth.shape) + \
+        (numpy.log(normalized_depth) / 5.70378)
+	logdepth_scaled = np.clip(logdepth, 0.0, 1.0)*255.0
+	return numpy.repeat(logdepth_scaled[:, :, numpy.newaxis], 3, axis=2)
+	#grey_img = [ [[logdepth_scaled[i][j], logdepth_scaled[i][j], logdepth_scaled[i][j]] for j in range(logdepth_scaled.shape[1])]
+	#		for i in range(logdepth_scaled.shape[0])]
+	#return np.array(grey_img)
+
+def depthmap_to_rgb(depth_map, scale_factor=1.0):
+	## Output ranges from blue (H=200) to red (H=360), corresponding to relative near to far
+	## depth_map*scale_factor scales each distance to range [0, 1]
+	
+	normalized_depth = np.multiply(depth_map,scale_factor)
+	
+	logdepth = np.ones(normalized_depth.shape) + \
+		(np.log(normalized_depth) / 5.70378)
+	logdepth = np.clip(logdepth, 0.0, 1.0)
+	normalized_log_depth = ((logdepth*160.0)+200.0)/360.0
+	rgb_img = [ [list(h_to_rgb(normalized_log_depth[i][j])) for j in range(normalized_log_depth.shape[1])] for i in range(normalized_log_depth.shape[0])]
+	return np.array(rgb_img)
+	#rgb_img = np.zeros(depth_map.shape + (3,))
+	#for i in range(depth_map.shape[0]):
+	#	for j in range(depth_map.shape[1]):
+	#		rgb_img[i][j] = list(h_to_rgb(depth_map[i][j]))
+	#return rgb_img
+	
+def hsv_to_rgb(h, s, v):
+	## All values should be in range [0,1]. (h=1.0 means 360degree)
+	## Ref: https://stackoverflow.com/a/26856771/5002496
+	if s == 0.0: v*=255; return (v, v, v)
+	i = int(h*6.) # XXX assume int() truncates!
+	f = (h*6.)-i; p,q,t = int(255*(v*(1.-s))), int(255*(v*(1.-s*f))), int(255*(v*(1.-s*(1.-f)))); v*=255; i%=6
+	if i == 0: return (v, t, p)
+	if i == 1: return (q, v, p)
+	if i == 2: return (p, v, t)
+	if i == 3: return (p, q, v)
+	if i == 4: return (t, p, v)
+	if i == 5: return (v, p, q)
+
+def h_to_rgb(h):
+	## Optimized equivalent to hsv_to_rgb(h, 1.0, 1.0)
+	i = int(h*6.)
+	f = (h*6.)-i
+	q,t = int(255*(1.-f)), int(255*f)
+	i%=6
+	if i == 0: return (255, t, 0)
+	if i == 1: return (q, 255, 0)
+	if i == 2: return (0, 255, t)
+	if i == 3: return (0, q, 255)
+	if i == 4: return (t, 0, 255)
+	if i == 5: return (255, 0, q)
+	return (0, 0, 0)
+
+def save_depthmap_as_16bit_png(filename, depth_map, scale_factor=1.0, invalidate_above=1.0):
+	## depth_map*scale_factor scales each distance to range [0, 1] and convert values>invalidate_above as 0
+	## Output is stored in KITTI format, i.e., 16-bit grayscale PNG
+	## Dividing each 16-bit value by 256 gives meters as specified in KITTI docs
+	out = np.multiply(depth_map, scale_factor) # Assuming it produces depth map in kilometers of range [0-1]
+	out[out>invalidate_above] = 0.0
+	#out = (65535*out).astype(np.uint16) # simply scale up as 16-bit values
+	out = (256000*out).astype(np.uint16) #convert it to meters by *1000 and *256 to produce KITTI compliant 16bit ground truth
+	with open(filename, 'wb') as f:
+		writer = png.Writer(width=out.shape[1], height=out.shape[0], bitdepth=16, greyscale=True)
+		writer.write(f, out.tolist())
+
 def is_process_alive(pid):
 	## Source: https://stackoverflow.com/questions/568271/how-to-check-if-there-exists-a-process-with-a-given-pid-in-python
 	try:
@@ -155,6 +225,9 @@ def break_file_path(path):
 def is_empty(str):
 	return str == 0 or len(str.replace("'", "").replace("\"", "")) == 0
 
+def create_dir(directory):
+	if not os.path.exists(directory):
+		os.makedirs(directory)
 
 def read_json(filename):
 	# read json file

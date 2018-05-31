@@ -128,6 +128,14 @@ env = CarlaEnv(is_render_enabled=True)  # To create an env
 env.render()
 ```
 
+### Saving screenshots
+```python
+env = CarlaEnv(save_screens=True)  # To create an env
+
+# To save after each action:
+env.save_screenshots()
+```
+
 ## Testing CARLA game as a human
 
 I have included a file **`human_play.py`** which you can run by
@@ -140,7 +148,7 @@ Use the arrow keys to play (`Up` to accelerate, `Down` to brake, `Left/Right` to
 
 ## Extras:
 
-- You can change resolution of server window, render in `Environment/carla_config.py`
+- You can change resolution of server window, render window and other configs in `Environment/carla_config.py`
 - You can get the following outputs, instead of just RGB image:
   - For Segmentated output: `env = CarlaEnv(cameras=['SemanticSegmentation'])` and `segmented_output = observation['segmented_image']`
   - For depth output: `env = CarlaEnv(cameras=['Depth'])` and `depth_map = observation['depth_map']`
