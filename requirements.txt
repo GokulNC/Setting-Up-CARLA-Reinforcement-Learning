@@ -4,3 +4,4 @@ scipy
 pynput
 pygame
 pypng
+Pillow
