@@ -25,9 +25,8 @@ This guide will help you set up the CARLA environment for RL. Most of my code he
 
 ## Requirements
 
-- Download the[ latest CARLA release from here](https://github.com/carla-simulator/carla/releases " latest CARLA release from here").   
-(As of the time of writing, CARLA is in Experimental stage for Windows OS)   
-(Tested using CARLA 0.8.0)
+- Download the [CARLA release (v0.8) from here](https://github.com/carla-simulator/carla/releases?after=0.9.0).  
+  (Tested using CARLA 0.8.0 only, [check this for 0.8.2](https://github.com/GokulNC/Setting-Up-CARLA-Reinforcement-Learning/issues/9#issuecomment-626318780))
 - Any Debian-based OS (Preferably Ubuntu 16.04 or later)
 - Python 3.x installed
 - To install python packages:
